@@ -1,0 +1,38 @@
+<section class="section section--night section--tight" aria-label="{{ section.settings.label | escape }}">
+  <div class="container stats">
+    {%- for block in section.blocks -%}
+      <div data-reveal style="--reveal-delay:{{ forloop.index0 | times: 6 }}ms" {{ block.shopify_attributes }}>
+        <div class="num">{{ block.settings.value }}</div>
+        <div class="lbl">{{ block.settings.label }}</div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats band",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Accessible label", "default": "Product standards" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "IP65" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Outdoor rated" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "value": "IP65", "label": "Outdoor rated" } },
+      { "type": "stat", "settings": { "value": "30k hrs", "label": "LED lifetime" } },
+      { "type": "stat", "settings": { "value": "2 yr", "label": "Lighting warranty" } },
+      { "type": "stat", "settings": { "value": "3000 K", "label": "Warm white light" } }
+    ]
+  },
+  "presets": [{ "name": "Stats band" }]
+}
+{% endschema %}

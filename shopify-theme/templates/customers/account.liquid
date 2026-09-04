@@ -1,0 +1,30 @@
+<div class="container section">
+  <p class="eyebrow">Your account</p>
+  <h1 class="h-title">Hello, {{ customer.first_name | default: customer.email }}</h1>
+  <div class="shop-layout mt-6" style="grid-template-columns:1.4fr .9fr">
+    <div>
+      <h2 class="h-subtitle mb-4">Orders</h2>
+      {%- paginate customer.orders by 10 -%}
+        {%- for order in customer.orders -%}
+          <div class="checkout-box mb-4">
+            <div class="flex justify-between flex-wrap gap-2">
+              <div><strong>Order {{ order.name }}</strong><br><span class="small muted">{{ order.created_at | date: '%b %-d, %Y' }} · {{ order.financial_status_label }}</span></div>
+              <div class="flex gap-3 items-center"><span>{{ order.total_price | money }}</span><a class="btn btn--ghost btn--small" href="{{ order.customer_url }}">View</a></div>
+            </div>
+          </div>
+        {%- else -%}
+          <p class="muted">No orders yet. <a class="link-arrow" href="{{ routes.all_products_collection_url }}">Start exploring →</a></p>
+        {%- endfor -%}
+        {%- if paginate.pages > 1 -%}<a class="btn btn--ghost btn--small" href="{{ paginate.next.url }}">Next page</a>{%- endif -%}
+      {%- endpaginate -%}
+    </div>
+    <aside class="checkout-box" style="align-self:start">
+      <h3>Account</h3>
+      <p class="small muted">{{ customer.email }}</p>
+      <div class="footer__links mt-4" style="color:var(--ink)">
+        <a href="{{ routes.account_addresses_url }}" class="link-arrow">Addresses</a>
+        <a href="{{ routes.account_logout_url }}" class="link-arrow">Sign out</a>
+      </div>
+    </aside>
+  </div>
+</div>

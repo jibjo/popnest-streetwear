@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "kicker": "New — the Arden outdoor sconce",
+        "heading": "Light Up Your Space With Modern Elegance",
+        "subheading": "Discover thoughtfully designed lighting and home décor made to transform everyday spaces.",
+        "cta1_label": "Shop Outdoor Lighting",
+        "cta2_label": "Explore Best Sellers"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Featured collection",
+        "heading": "Designed to be noticed. Built to be lived in.",
+        "count": 8,
+        "link_label": "View all products"
+      }
+    },
+    "flagship": {
+      "type": "flagship-product",
+      "blocks": {
+        "b1": { "type": "bullet", "settings": { "text": "Up-and-down beam that grazes wall texture beautifully" } },
+        "b2": { "type": "bullet", "settings": { "text": "IP65 sealed aluminum body — rain, dust and coastal air" } },
+        "b3": { "type": "bullet", "settings": { "text": "3000 K warm white, ≈30,000-hour LED lifetime" } },
+        "b4": { "type": "bullet", "settings": { "text": "Rotatable mount — vertical or horizontal installation" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {}
+    },
+    "trust": { "type": "trust-bar" },
+    "categories": { "type": "category-grid" },
+    "favorites": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Customer favorites",
+        "heading": "The pieces people come back for",
+        "count": 4,
+        "link_label": "Shop favorites"
+      }
+    },
+    "lifestyle": { "type": "lifestyle-editorial" },
+    "story": { "type": "brand-story" },
+    "stats": { "type": "stats-band" },
+    "blog": { "type": "blog-posts" },
+    "newsletter": { "type": "newsletter" }
+  },
+  "order": ["hero", "featured", "flagship", "trust", "categories", "favorites", "lifestyle", "story", "stats", "blog", "newsletter"]
+}

@@ -1,0 +1,30 @@
+<main id="main">
+  <div class="container page-head" style="padding-bottom:0">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Track order</span>
+    </nav>
+    <p class="eyebrow">Order tracking</p>
+    <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">Track your order</h1>
+    <p class="lede mt-3">Enter your order number and the email used at checkout — or a tracking number — to see live status.</p>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container" style="max-width:640px">
+      <form class="checkout-box" id="trackForm">
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="trackNum">Order number or tracking number</label>
+            <input id="trackNum" required placeholder="e.g. HN-12345 or 1Z999AA1…" autocomplete="off">
+          </div>
+          <div class="field field--full">
+            <label for="trackEmail">Email used at checkout</label>
+            <input id="trackEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+          </div>
+        </div>
+        <button class="btn btn--primary btn--full mt-5" type="submit">Track order</button>
+        <p class="small muted mt-4">Lost your order number? Email <a href="mailto:support@heavenly.co">support@heavenly.co</a> and we'll find it. Tracking activates the moment your order ships.</p>
+      </form>
+      <div id="trackResult" class="mt-6" aria-live="polite"></div>
+    </div>
+  </section>
+</main>

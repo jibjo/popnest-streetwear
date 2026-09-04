@@ -1,0 +1,22 @@
+<div class="container section">
+  <nav class="breadcrumbs"><a href="{{ routes.account_url }}">Account</a><span class="sep">/</span><span>Order {{ order.name }}</span></nav>
+  <h1 class="h-title">Order {{ order.name }}</h1>
+  <p class="small muted">{{ order.created_at | date: '%B %-d, %Y' }} · {{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</p>
+  <div class="checkout-box mt-5">
+    {%- for line in order.line_items -%}
+      <div class="cart-line">
+        {%- if line.image -%}<img src="{{ line.image | image_url: width: 200 }}" alt="{{ line.title | escape }}" width="84" height="96">{%- endif -%}
+        <div><div class="cart-line__title">{{ line.title }}</div><div class="cart-line__variant">Qty {{ line.quantity }}</div><div class="cart-line__price">{{ line.final_line_price | money }}</div></div>
+      </div>
+    {%- endfor -%}
+    <div class="summary-totals mt-4">
+      <div class="row"><span>Subtotal</span><span>{{ order.line_items_subtotal_price | money }}</span></div>
+      <div class="row"><span>Shipping</span><span>{{ order.shipping_price | money }}</span></div>
+      <div class="row"><span>Tax</span><span>{{ order.tax_price | money }}</span></div>
+      <div class="row grand"><span>Total</span><span>{{ order.total_price | money }}</span></div>
+    </div>
+    {%- if order.fulfillment -%}
+      <p class="small mt-4">Tracking: <strong>{{ order.fulfillment.tracking_company }}</strong> — <a href="{{ order.fulfillment.tracking_url }}">{{ order.fulfillment.tracking_number }}</a></p>
+    {%- endif -%}
+  </div>
+</div>

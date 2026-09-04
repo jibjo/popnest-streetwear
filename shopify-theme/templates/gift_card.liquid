@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gift card — {{ shop.name }}</title>
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+  <div class="container section" style="max-width:520px;text-align:center">
+    <p class="eyebrow" style="justify-content:center">{{ shop.name }}</p>
+    <h1 class="h-title">Gift card</h1>
+    <div class="checkout-box mt-5">
+      <div class="big" style="font-family:var(--font-display);font-size:48px">{{ gift_card.initial_value | money }}</div>
+      <p class="muted mt-2">Code: <strong>{{ gift_card.code | format_code }}</strong></p>
+      {%- if gift_card.expired -%}<p style="color:var(--danger)">This gift card has expired.</p>
+      {%- elsif gift_card.enabled != true -%}<p style="color:var(--danger)">This gift card is disabled.</p>{%- endif -%}
+      <p class="small muted mt-4">Use this code at checkout. Balance: {{ gift_card.balance | money }}</p>
+      <a class="btn btn--primary mt-4" href="{{ shop.url }}">Continue shopping</a>
+      <div style="margin-top:16px" id="QrCanvas"></div>
+    </div>
+  </div>
+</body>
+</html>

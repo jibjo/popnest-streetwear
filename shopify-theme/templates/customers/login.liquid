@@ -1,0 +1,25 @@
+<div class="container section" style="max-width:460px">
+  <p class="eyebrow">Welcome back</p>
+  <h1 class="h-title" style="font-size:clamp(26px,3vw,36px)">Sign in</h1>
+  <div class="checkout-box mt-5">
+    {%- form 'customer_login', novalidate: 'novalidate' -%}
+      {{ form.errors | default_errors }}
+      <div class="field field--full"><label for="cl-email">Email</label><input id="cl-email" type="email" name="customer[email]" required autocomplete="email"></div>
+      <div class="field field--full"><label for="cl-pass">Password</label><input id="cl-pass" type="password" name="customer[password]" required autocomplete="current-password"></div>
+      <button class="btn btn--primary btn--full mt-4" type="submit">Sign in</button>
+      <div class="flex justify-between mt-4 small">
+        <a href="#recover">Forgot password?</a>
+        <a href="{{ routes.account_register_url }}">Create account</a>
+      </div>
+    {%- endform -%}
+  </div>
+  <div id="recover" class="checkout-box mt-5" style="display:none">
+    {%- form 'recover_customer_password' -%}
+      {{ form.errors | default_errors }}
+      {%- if form.posted_successfully? -%}<p class="small" style="color:var(--success)">✓ Reset email sent — check your inbox.</p>{%- endif -%}
+      <div class="field field--full"><label for="cr-email">Email</label><input id="cr-email" type="email" name="email" required autocomplete="email"></div>
+      <button class="btn btn--primary btn--full mt-4" type="submit">Send reset link</button>
+    {%- endform -%}
+  </div>
+</div>
+<script>document.querySelector('a[href="#recover"]').addEventListener('click',function(e){e.preventDefault();document.getElementById('recover').style.display='';});</script>

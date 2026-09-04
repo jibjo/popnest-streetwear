@@ -1,0 +1,35 @@
+<main id="main">
+  <div class="container page-head" style="padding-bottom:0">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Your bag</span>
+    </nav>
+    <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">Your bag</h1>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container shop-layout" style="grid-template-columns:1.4fr .9fr">
+      <div id="cartPageGrid"></div>
+      <aside class="filters" style="position:sticky" id="cartPageSummary">
+        <div class="checkout-box">
+          <h3 style="margin-bottom:8px">Order summary</h3>
+          <div class="cart-subtotal"><span>Subtotal</span><strong id="cartPageSubtotal"></strong></div>
+          <p class="cart-note">Shipping and taxes are calculated at checkout.</p>
+          <form class="ship-est-form" id="cartShipForm" style="margin-bottom:14px">
+            <select aria-label="Country" style="flex:1">
+              <option value="US">United States</option><option value="GB">United Kingdom</option>
+              <option value="CA">Canada</option><option value="AU">Australia</option>
+              <option value="AE">United Arab Emirates</option><option value="DE">Germany</option>
+              <option value="IN">India</option><option value="KE">Kenya</option>
+            </select>
+            <input placeholder="Postal code" aria-label="Postal code">
+            <button class="btn btn--ghost btn--small">Estimate</button>
+          </form>
+          <div class="ship-est-result" aria-live="polite" style="margin-bottom:14px"></div>
+          <a class="btn btn--primary btn--full" href="checkout.html" data-track-cta="cart_page_checkout">Checkout securely</a>
+          <p class="secure-note mt-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> SSL encrypted checkout</p>
+          <a class="btn btn--ghost btn--full" style="margin-top:10px" href="shop.html">Continue shopping</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

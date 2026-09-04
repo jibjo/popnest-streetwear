@@ -1,0 +1,14 @@
+{%- comment -%} Renders money. Params: product (optional), price (optional cents), use_variant (bool) {%- endcomment -%}
+{%- if use_variant -%}
+  {%- assign target = product.selected_or_first_available_variant -%}
+{%- else -%}
+  {%- assign target = product -%}
+{%- endif -%}
+{%- if price -%}
+  {{- price | money -}}
+{%- elsif target -%}
+  {{- target.price | money -}}
+  {%- if target.compare_at_price > target.price -%}
+    <s>{{ target.compare_at_price | money }}</s>
+  {%- endif -%}
+{%- endif -%}

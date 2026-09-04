@@ -1,0 +1,31 @@
+{%- comment -%}
+  Chat widget — polished, integration-ready placeholder.
+  [INTEGRATION] Replace the body of the panel with your live-chat embed
+  (Shopify Inbox, Gorgias, Zendesk, Tidio). Until then it honestly explains
+  how to reach support — it never pretends a human is online.
+{%- endcomment -%}
+{%- if settings.show_chat_widget -%}
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" role="dialog" aria-label="Customer chat">
+    <div class="chat-panel__head">
+      <span class="avatar" aria-hidden="true">H</span>
+      <div>
+        <strong>Heavenly Support</strong>
+        <small class="chat-status">Chat connects at launch — replies by email</small>
+      </div>
+    </div>
+    <div class="chat-panel__body" id="chatBody" aria-live="polite">
+      <div class="chat-msg chat-msg--bot">Hi — thanks for stopping by Heavenly. Email <strong>{{ settings.support_email }}</strong> and a real person replies within one business day.</div>
+      <div class="chat-msg chat-msg--bot">Our live chat (Shopify Inbox / Gorgias) plugs into this panel the moment we switch it on.</div>
+    </div>
+    <form class="chat-panel__form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Type a message…" aria-label="Chat message">
+      <button type="submit" aria-label="Send message"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+    </form>
+  </div>
+  <button class="chat-fab" id="chatFab" aria-label="Open customer chat">
+    <svg class="open-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8 8 0 0 1-8 8H4l2.5-2.5A8 8 0 1 1 21 12z"/></svg>
+    <svg class="close-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+{%- endif -%}

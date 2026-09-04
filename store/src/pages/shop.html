@@ -1,0 +1,48 @@
+<main id="main">
+  <div class="container page-head" style="padding-bottom:0">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Shop</span>
+    </nav>
+    <p class="eyebrow">The collection</p>
+    <h1 class="h-display" id="shopTitle" style="font-size:clamp(34px,5vw,56px)">Shop all</h1>
+    <p class="lede mt-3" id="shopLede">Lighting and décor designed to transform everyday spaces — indoors and out.</p>
+    <div class="mt-5" style="max-width:520px">
+      <input id="shopSearch" type="search" placeholder="Search products…" aria-label="Search products" style="width:100%;border:1.5px solid var(--line);border-radius:var(--radius-pill);padding:13px 22px;font-size:15px;background:#fff">
+    </div>
+  </div>
+
+  <section class="section section--tight" aria-label="Products">
+    <div class="container shop-layout">
+      <aside>
+        <button class="btn btn--ghost btn--small filters-toggle w-full" id="filtersToggle">Filter &amp; sort ▾</button>
+        <div class="filters mt-4" id="shopFilters"></div>
+      </aside>
+      <div>
+        <div class="shop-toolbar">
+          <span class="shop-toolbar__count" id="shopCount"></span>
+          <label class="flex items-center gap-2">
+            <span class="visually-hidden">Sort products</span>
+            <select class="sort-select" id="sortSelect" aria-label="Sort products">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low to high</option>
+              <option value="price-desc">Price: High to low</option>
+              <option value="title">Alphabetical</option>
+            </select>
+          </label>
+        </div>
+        <div class="active-filters" id="activeFilters"></div>
+        <div id="shopGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="recentTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Recently viewed</p>
+        <h2 class="title" id="recentTitle" style="font-size:clamp(22px,3vw,30px)">Pick up where you left off</h2>
+      </div>
+      <div id="recentShelf"></div>
+    </div>
+  </section>
+</main>

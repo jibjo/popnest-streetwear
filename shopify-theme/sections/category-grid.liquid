@@ -1,0 +1,62 @@
+<section class="section" aria-label="Shop by category">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="title">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="cat-grid">
+      {%- for block in section.blocks -%}
+        {%- assign col = collections[block.settings.collection] -%}
+        <a class="cat-card" href="{{ col.url | default: block.settings.link }}" data-reveal style="--reveal-delay:{{ forloop.index0 | times: 5 }}ms" {{ block.shopify_attributes }}>
+          {%- assign img = block.settings.image | default: col.featured_image -%}
+          {%- if img != blank -%}
+            {{ img | image_url: width: 900 | image_tag: loading: 'lazy', alt: block.settings.title, widths: '400,600,900' }}
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          <span class="cat-card__label">
+            <span><strong>{{ block.settings.title | default: col.title }}</strong><small>{{ block.settings.tagline }}</small></span>
+            <span class="arr">→</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category grid",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by category" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every corner, considered" }
+  ],
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Custom image (overrides collection image)" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "text", "id": "tagline", "label": "Tagline", "default": "Explore →" },
+        { "type": "url", "id": "link", "label": "Fallback link" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Category grid",
+    "blocks": [
+      { "type": "category", "settings": { "title": "Outdoor Lighting", "tagline": "Weather-rated glow" } },
+      { "type": "category", "settings": { "title": "Wall Sconces", "tagline": "Architectural accents" } },
+      { "type": "category", "settings": { "title": "Pendant Lighting", "tagline": "Sculpted overhead" } },
+      { "type": "category", "settings": { "title": "Chandeliers", "tagline": "Statement pieces" } },
+      { "type": "category", "settings": { "title": "Lamps", "tagline": "Warm layered light" } },
+      { "type": "category", "settings": { "title": "Mirrors", "tagline": "Light & space" } },
+      { "type": "category", "settings": { "title": "Rugs", "tagline": "Grounded texture" } },
+      { "type": "category", "settings": { "title": "Accessories & Objects", "tagline": "Finishing touches" } }
+    ]
+  }]
+}
+{% endschema %}

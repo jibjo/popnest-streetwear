@@ -1,0 +1,15 @@
+<div class="container section" style="max-width:460px">
+  <p class="eyebrow">New here</p>
+  <h1 class="h-title" style="font-size:clamp(26px,3vw,36px)">Create account</h1>
+  <div class="checkout-box mt-5">
+    {%- form 'create_customer', novalidate: 'novalidate' -%}
+      {{ form.errors | default_errors }}
+      <div class="field field--full"><label for="reg-first">First name</label><input id="reg-first" name="customer[first_name]" autocomplete="given-name"></div>
+      <div class="field field--full"><label for="reg-last">Last name</label><input id="reg-last" name="customer[last_name]" autocomplete="family-name"></div>
+      <div class="field field--full"><label for="reg-email">Email</label><input id="reg-email" type="email" name="customer[email]" required autocomplete="email"></div>
+      <div class="field field--full"><label for="reg-pass">Password</label><input id="reg-pass" type="password" name="customer[password]" required autocomplete="new-password"></div>
+      <button class="btn btn--primary btn--full mt-4" type="submit">Create account</button>
+      <p class="small muted mt-4">Accounts store your addresses and orders. Marketing email is opt-in only.</p>
+    {%- endform -%}
+  </div>
+</div>

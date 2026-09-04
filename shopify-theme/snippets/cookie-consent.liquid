@@ -1,0 +1,39 @@
+{%- comment -%} Cookie consent banner + preferences drawer. Consent gates analytics. {%- endcomment -%}
+{%- if settings.show_cookie_banner -%}
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  <h3>{{ 'general.cookie.title' | t }}</h3>
+  <p>{{ 'general.cookie.body' | t }} Read our <a href="{{ routes.root_url }}policies/privacy-policy">Privacy Policy</a>.</p>
+  <div class="cookie-banner__actions">
+    <button class="btn btn--primary btn--small" data-consent-accept>{{ 'general.cookie.accept' | t }}</button>
+    <button class="btn btn--ghost btn--small" data-consent-reject>{{ 'general.cookie.reject' | t }}</button>
+    <button class="btn btn--ghost btn--small" data-consent-manage>{{ 'general.cookie.manage' | t }}</button>
+  </div>
+</div>
+
+<div class="drawer cookie-modal" id="cookieDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel drawer__panel--right" role="dialog" aria-label="Cookie preferences">
+    <div class="drawer__head">
+      <span class="drawer__title">Cookie preferences</span>
+      <button class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <form id="cookiePrefsForm">
+        <div class="toggle-row">
+          <div><strong>Essential</strong><p>Required for cart, checkout and security. Always on.</p></div>
+          <span class="toggle"><input type="checkbox" checked disabled aria-label="Essential cookies (always on)"><span class="track"></span><span class="thumb"></span></span>
+        </div>
+        <div class="toggle-row">
+          <div><strong>Analytics</strong><p>Help us understand which pages and products interest visitors.</p></div>
+          <span class="toggle"><input type="checkbox" id="ckAnalytics" checked><span class="track"></span><span class="thumb"></span></span>
+        </div>
+        <div class="toggle-row" style="border-bottom:0">
+          <div><strong>Marketing</strong><p>Measure the performance of our advertising campaigns.</p></div>
+          <span class="toggle"><input type="checkbox" id="ckMarketing"><span class="track"></span><span class="thumb"></span></span>
+        </div>
+        <button class="btn btn--primary btn--full mt-5" type="submit">Save preferences</button>
+      </form>
+    </div>
+  </div>
+</div>
+{%- endif -%}

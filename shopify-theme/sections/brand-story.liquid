@@ -1,0 +1,42 @@
+<section class="section section--warm" aria-label="Our story">
+  <div class="container split{% if section.settings.reverse %} split--rev{% endif %}">
+    <div class="split__media" data-reveal>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading, widths: '600,900,1200' }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      {%- if section.settings.float_card != blank -%}
+        <div class="float-card"><span>{{ section.settings.float_card }}</span></div>
+      {%- endif -%}
+    </div>
+    <div data-reveal style="--reveal-delay:.1s">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="title">{{ section.settings.heading }}</h2>
+      <div class="lede mt-4">{{ section.settings.body }}</div>
+      <div class="flex gap-3 mt-6 flex-wrap">
+        {%- if section.settings.cta1_label != blank -%}<a class="btn btn--primary" href="{{ section.settings.cta1_link }}">{{ section.settings.cta1_label }}</a>{%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}<a class="btn btn--ghost" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "reverse", "label": "Mirror layout", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Light is the fastest way to change a room" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Heavenly began with a simple frustration: most lighting forced you to choose between beautiful and well-made, or between well-made and honestly priced.</p><p>We design and curate a small, deliberate collection — specified with real materials, published specs and warranty terms we stand behind. No invented discounts. Just design that works hard in real homes.</p>" },
+    { "type": "text", "id": "float_card", "label": "Floating card text", "default": "Design-first. Every detail earns its place." },
+    { "type": "text", "id": "cta1_label", "label": "Primary CTA", "default": "Read our story" },
+    { "type": "url", "id": "cta1_link", "label": "Primary CTA link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary CTA", "default": "Shop the collection" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary CTA link" }
+  ],
+  "presets": [{ "name": "Brand story" }]
+}
+{% endschema %}

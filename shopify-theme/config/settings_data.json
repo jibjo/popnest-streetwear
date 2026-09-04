@@ -1,0 +1,24 @@
+{
+  "current": {
+    "brand_wordmark": "Heavenly",
+    "brand_tagline": "LIGHTING & DÉCOR",
+    "color_accent": "#a8875a",
+    "color_night": "#131518",
+    "logo_width": 140,
+    "free_shipping_threshold": 150,
+    "support_email": "support@heavenly.co",
+    "business_hours": "[BUSINESS HOURS]",
+    "show_cookie_banner": true,
+    "show_chat_widget": true,
+    "show_sample_reviews": true,
+    "ga4_id": "",
+    "meta_pixel_id": "",
+    "tiktok_id": "",
+    "google_ads_id": "",
+    "enable_currency_estimates": true,
+    "sections": {
+      "header-group": {},
+      "footer-group": {}
+    }
+  }
+}

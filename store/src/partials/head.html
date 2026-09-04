@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <meta name="theme-color" content="#131518">
+  <link rel="icon" type="image/svg+xml" href="{{ROOT}}assets/img/favicon.svg">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="{{OG_TYPE}}">
+  <meta property="og:site_name" content="Heavenly.co">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+
+  <!-- Fonts: preconnect + swap; self-host before launch for Core Web Vitals -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ROOT}}assets/css/theme.css">
+
+  <!-- Organization + WebSite structured data (site-wide) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Heavenly.co",
+    "url": "{{SITE_URL}}/",
+    "logo": "{{SITE_URL}}/assets/img/favicon.svg",
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Heavenly.co",
+    "url": "{{SITE_URL}}/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{SITE_URL}}/shop.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  {{EXTRA_SCHEMA}}
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>

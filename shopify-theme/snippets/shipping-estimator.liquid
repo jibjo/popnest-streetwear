@@ -1,0 +1,24 @@
+{%- comment -%}
+  Shipping estimator.
+  [INTEGRATION] The preview logic in theme.js returns zone-based estimates.
+  For live rates: Shopify returns real carrier rates during checkout; you can
+  also connect a rates API (EasyPost, Shippo) via an app proxy and replace
+  HN.shipping.estimate() in theme.js.
+{%- endcomment -%}
+<div class="assurance__row assurance__row--est" {% if compact %}style="border:0;padding:8px 0"{% endif %}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="1.5" y="6" width="15" height="11" rx="2"/><path d="M16.5 10h3l2.5 3v4h-5.5"/></svg>
+  <div>
+    <strong>{{ 'products.product.shipping_estimate' | t }}</strong>
+    <form class="ship-est-form" data-shipping-estimator>
+      <select aria-label="Country">
+        <option value="US">United States</option><option value="GB">United Kingdom</option>
+        <option value="CA">Canada</option><option value="AU">Australia</option>
+        <option value="AE">United Arab Emirates</option><option value="DE">Germany</option>
+        <option value="IN">India</option><option value="KE">Kenya</option>
+      </select>
+      <input placeholder="Postal code" aria-label="Postal code">
+      <button class="btn btn--ghost btn--small" type="submit">Check</button>
+    </form>
+    <div class="ship-est-result" aria-live="polite"></div>
+  </div>
+</div>

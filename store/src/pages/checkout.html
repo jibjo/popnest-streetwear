@@ -1,0 +1,110 @@
+<main id="main">
+  <div class="container section--tight" style="padding-top:36px">
+    <div class="demo-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+      <span><strong>Checkout preview.</strong> In production, checkout is handled by our commerce platform's PCI-compliant, encrypted checkout — this page demonstrates the flow and never transmits payment or personal data. Payment methods (cards, PayPal, wallets) appear here once the payment gateway is connected.</span>
+    </div>
+
+    <div class="checkout-layout" id="checkoutMain">
+      <form class="checkout-col" id="checkoutForm" novalidate>
+        <div class="checkout-box">
+          <h3><span class="step-num">1</span> Contact</h3>
+          <div class="form-grid">
+            <div class="field field--full"><label for="coEmail">Email</label><input id="coEmail" type="email" required placeholder="you@example.com"><span class="error">Enter a valid email for your receipt</span></div>
+          </div>
+        </div>
+
+        <div class="checkout-box">
+          <h3><span class="step-num">2</span> Shipping address</h3>
+          <div class="form-grid">
+            <div class="field"><label for="coFirst">First name</label><input id="coFirst" required autocomplete="given-name"></div>
+            <div class="field"><label for="coLast">Last name</label><input id="coLast" required autocomplete="family-name"></div>
+            <div class="field field--full"><label for="coAddr">Address</label><input id="coAddr" required autocomplete="street-address" placeholder="Street and number"></div>
+            <div class="field field--full"><label for="coAddr2">Apartment, suite (optional)</label><input id="coAddr2" autocomplete="address-line2"></div>
+            <div class="field"><label for="coCity">City</label><input id="coCity" required autocomplete="address-level2"></div>
+            <div class="field"><label for="coPostal">Postal / ZIP code</label><input id="coPostal" required autocomplete="postal-code"></div>
+            <div class="field"><label for="coCountry">Country</label>
+              <select id="coCountry" required autocomplete="country">
+                <option value="US">United States</option><option value="CA">Canada</option><option value="GB">United Kingdom</option>
+                <option value="IE">Ireland</option><option value="FR">France</option><option value="DE">Germany</option>
+                <option value="ES">Spain</option><option value="IT">Italy</option><option value="NL">Netherlands</option>
+                <option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="AE">United Arab Emirates</option>
+                <option value="IN">India</option><option value="JP">Japan</option><option value="SG">Singapore</option>
+                <option value="KE">Kenya</option><option value="UG">Uganda</option><option value="ZA">South Africa</option>
+              </select>
+            </div>
+            <div class="field"><label for="coPhone">Phone (for delivery updates)</label><input id="coPhone" type="tel" autocomplete="tel"></div>
+          </div>
+        </div>
+
+        <div class="checkout-box">
+          <h3><span class="step-num">3</span> Shipping method</h3>
+          <label class="radio-card is-active">
+            <input type="radio" name="shipMethod" value="standard" data-cost="12.95" checked>
+            <span><span class="rc-title">Standard</span><br><span class="rc-sub">3–7 business days · tracked</span></span>
+            <span class="rc-price" id="shipStandardPrice">$12.95</span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="shipMethod" value="express" data-cost="24.95">
+            <span><span class="rc-title">Express</span><br><span class="rc-sub">2–4 business days · tracked &amp; priority</span></span>
+            <span class="rc-price">$24.95</span>
+          </label>
+          <p class="small muted">Orders at or above the free-shipping threshold ship free on Standard. Final rates are confirmed by the live carrier at checkout.</p>
+        </div>
+
+        <div class="checkout-box">
+          <h3><span class="step-num">4</span> Payment</h3>
+          <p class="small muted mb-4">🔒 Card fields are provided by the payment gateway at launch (Shopify Payments / Stripe / PayPal). This preview intentionally collects no payment information.</p>
+          <div class="radio-card" style="opacity:.75">
+            <input type="radio" disabled>
+            <span><span class="rc-title">Credit / debit card</span><br><span class="rc-sub">Enabled when the gateway is connected</span></span>
+            <span class="rc-price">VISA · MC · AMEX</span>
+          </div>
+          <div class="radio-card" style="opacity:.75">
+            <input type="radio" disabled>
+            <span><span class="rc-title">PayPal / wallets</span><br><span class="rc-sub">Enabled when the gateway is connected</span></span>
+          </div>
+        </div>
+
+        <button class="btn btn--primary btn--full" type="submit">Place order (demo)</button>
+        <p class="small muted text-center">By placing an order you agree to our <a href="terms-conditions.html">Terms</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      </form>
+
+      <aside class="checkout-box" style="position:sticky;top:calc(var(--header-h) + 20px)">
+        <h3>Order summary</h3>
+        <div id="checkoutSummary"></div>
+        <div class="summary-totals">
+          <div class="row"><span>Subtotal</span><span id="coSubtotal"></span></div>
+          <div class="row"><span>Shipping</span><span id="coShipping"></span></div>
+          <div class="row" id="coDiscountRow" style="display:none"><span>Discount (HEAVENLY10)</span><span id="coDiscount" style="color:var(--success)"></span></div>
+          <div class="row"><span>Tax</span><span class="muted">Calculated at payment</span></div>
+          <div class="row grand"><span>Total</span><span id="coTotal"></span></div>
+        </div>
+        <hr class="divider my-0" style="margin:18px 0">
+        <label class="small" for="discountCode" style="font-weight:600">Discount code</label>
+        <div class="flex gap-2 mt-2">
+          <input id="discountCode" placeholder="Try HEAVENLY10 (sample)" style="flex:1;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px">
+        </div>
+        <p class="small muted mt-2">Sample code for the design preview. Real codes are created in the store admin and validated server-side.</p>
+        <div class="icon-badge-row mt-5" style="gap:14px">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> SSL secured</span>
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg> Easy returns</span>
+        </div>
+      </aside>
+    </div>
+
+    <div id="orderConfirm" style="display:none" role="status">
+      <div class="checkout-box text-center" style="max-width:560px;margin:0 auto;padding:48px 32px">
+        <div style="width:64px;height:64px;border-radius:50%;background:#e7f3ec;color:var(--success);display:grid;place-items:center;margin:0 auto 18px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h2 class="h-subtitle">Demo order placed — thank you!</h2>
+        <p class="muted mt-3">This confirms the checkout flow works end to end. In production this screen shows a real order number, emails a confirmation, and hands off to the payment gateway first.</p>
+        <div class="flex gap-3 mt-5" style="justify-content:center">
+          <a class="btn btn--primary" href="shop.html">Continue shopping</a>
+          <a class="btn btn--ghost" href="track-order.html">Track an order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,25 @@
+<div class="container section">
+  <h1 class="h-title">Addresses</h1>
+  {%- for address in customer.addresses -%}
+    <div class="checkout-box mt-4">
+      {{ address | format_address }}
+      <div class="flex gap-3 mt-4">
+        <form method="post" action="/account/addresses/{{ address.id }}"><button class="btn btn--ghost btn--small" type="submit">Delete</button></form>
+      </div>
+    </div>
+  {%- endfor -%}
+  {%- form 'new_address', class: 'checkout-box mt-5' -%}
+    <h3>Add address</h3>
+    {{ form.errors | default_errors }}
+    <div class="form-grid mt-4">
+      <div class="field"><label for="na-first">First name</label><input id="na-first" name="address[first_name]" autocomplete="given-name"></div>
+      <div class="field"><label for="na-last">Last name</label><input id="na-last" name="address[last_name]" autocomplete="family-name"></div>
+      <div class="field field--full"><label for="na-addr1">Address</label><input id="na-addr1" name="address[address1]" autocomplete="address-line1"></div>
+      <div class="field"><label for="na-city">City</label><input id="na-city" name="address[city]" autocomplete="address-level2"></div>
+      <div class="field"><label for="na-zip">Postal code</label><input id="na-zip" name="address[zip]" autocomplete="postal-code"></div>
+      <div class="field"><label for="na-country">Country</label><select id="na-country" name="address[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select></div>
+      <div class="field"><label for="na-phone">Phone</label><input id="na-phone" name="address[phone]" autocomplete="tel"></div>
+    </div>
+    <button class="btn btn--primary mt-4" type="submit">Save address</button>
+  {%- endform -%}
+</div>

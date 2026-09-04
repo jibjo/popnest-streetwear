@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq-accordion",
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "How long does shipping take?", "answer": "<p>Orders are prepared in [PROCESSING TIME], then typically 3–7 business days domestically and 5–16 internationally. Live estimates appear at checkout.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "What's your return policy?", "answer": "<p>Eligible items can be returned within [RETURN WINDOW] of delivery, unused and in original packaging. See our Returns & Refunds policy.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "What does IP65 mean?", "answer": "<p>IP65-rated fixtures are dust-tight and protected against water jets — suitable for covered and exposed outdoor walls in normal weather.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "Do your outdoor lights need bulbs?", "answer": "<p>The Arden and Strata sconces use integrated LED modules rated for roughly 30,000 hours — no bulbs to buy or change.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Can I install the sconce myself?", "answer": "<p>Our sconces hardwire to a standard junction box. A confident DIYer can install them with the power off; we recommend a licensed electrician.</p>" } },
+        "q6": { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes — we ship to most countries. Duties and taxes are the recipient's responsibility unless stated otherwise at checkout.</p>" } },
+        "q7": { "type": "qa", "settings": { "question": "Is checkout secure?", "answer": "<p>Yes. Checkout is encrypted with HTTPS/TLS and payments are processed by our payment provider. Card details never touch our servers.</p>" } },
+        "q8": { "type": "qa", "settings": { "question": "Do products come with a warranty?", "answer": "<p>Lighting carries a 2-year limited warranty against manufacturing defects.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

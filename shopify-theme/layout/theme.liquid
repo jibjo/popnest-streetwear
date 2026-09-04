@@ -1,0 +1,74 @@
+{%- comment -%}
+  HEAVENLY.CO — Shopify Online Store 2.0 theme
+  Original brand: "Heavenly — Lighting & Décor"
+  This layout is the equivalent of the static preview's head/header/footer.
+{%- endcomment -%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_night }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+
+  {%- comment -%} Meta titles/descriptions, Open Graph, Twitter {%- endcomment -%}
+  {%- render 'meta-tags' -%}
+
+  {%- comment -%} Structured data {%- endcomment -%}
+  {%- render 'structured-data-organization' -%}
+
+  {%- comment -%} Preconnect + fonts (swap to self-hosted font_face for performance) {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+  {%- comment -%} [INTEGRATION] Paste tracking scripts here ONLY when supplied.
+  They are consent-gated by the cookie banner (see snippets/cookie-consent.liquid
+  and the HN.analytics module in theme.js):
+      GA4:        {% if settings.ga4_id != blank %}…gtag.js with {{ settings.ga4_id }}…{% endif %}
+      Meta Pixel: {% if settings.meta_pixel_id != blank %}…{% endif %}
+      TikTok:     {% if settings.tiktok_id != blank %}…{% endif %}
+      Google Ads: {% if settings.google_ads_id != blank %}…{% endif %}
+  {%- endcomment -%}
+
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template.name }}">
+  <a class="skip-link" href="#MainContent">{{ 'general.skip_to_content' | t }}</a>
+
+  {%- comment -%} Sections rendered from header group (announcement + header) {%- endcomment -%}
+  {% sections 'header-group' %}
+
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  {%- render 'cart-drawer' -%}
+  {%- render 'search-drawer' -%}
+  {%- render 'cookie-consent' -%}
+  {%- render 'chat-widget' -%}
+  <div class="toast" id="hnToast" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span></span></div>
+
+  <script>
+    /* Bridge server data to the JS app */
+    window.HN_SHOP = {
+      routes: {
+        cart: '{{ routes.cart_url }}',
+        cartAdd: '{{ routes.cart_add_url }}',
+        cartChange: '{{ routes.cart_change_url }}',
+        predictiveSearch: '{{ routes.predictive_search_url }}'
+      },
+      moneyFormat: {{ shop.money_format | json }},
+      currency: '{{ cart.currency.iso_code }}',
+      freeShippingThreshold: {{ settings.free_shipping_threshold | times: 100 | default: 0 }},
+      strings: { added: {{ 'products.product.added_to_cart' | t | json }}, soldOut: {{ 'products.product.sold_out' | t | json }} }
+    };
+  </script>
+</body>
+</html>

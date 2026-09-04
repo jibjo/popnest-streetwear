@@ -1,0 +1,14 @@
+<div class="container section" style="max-width:460px">
+  <h1 class="h-title">Activate your account</h1>
+  <div class="checkout-box mt-5">
+    {%- form 'activate_customer_password' -%}
+      {{ form.errors | default_errors }}
+      <div class="field field--full"><label for="ac-pass">Password</label><input id="ac-pass" type="password" name="customer[password]" required autocomplete="new-password"></div>
+      <div class="field field--full"><label for="ac-pass2">Confirm password</label><input id="ac-pass2" type="password" name="customer[password_confirmation]" required autocomplete="new-password"></div>
+      <div class="flex gap-3 mt-4">
+        <button class="btn btn--primary" type="submit">Activate</button>
+        <button class="btn btn--ghost" type="submit" name="decline">Decline</button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>

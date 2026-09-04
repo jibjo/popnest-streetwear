@@ -1,0 +1,170 @@
+<!-- ================= Announcement bar ================= -->
+<div class="announcement" role="region" aria-label="Announcements">
+  <div class="announcement__inner container">
+    <div class="announcement__track" aria-live="polite">
+      <p class="announcement__msg is-active">Free shipping on qualifying orders <span class="dot">•</span> Secure checkout <span class="dot">•</span> Easy returns</p>
+      <p class="announcement__msg">Thoughtfully designed lighting &amp; décor <span class="dot">•</span> Ships worldwide</p>
+      <p class="announcement__msg">Join the list for early access to new collections <span class="dot">•</span> <a href="index.html#newsletter">Sign up</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Header ================= -->
+<header class="header" id="siteHeader">
+  <div class="container header__inner">
+    <button class="icon-btn header__toggle" data-drawer-open="mobileDrawer" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <a class="logo" href="index.html" aria-label="Heavenly.co — home">
+      <span class="logo__mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+      </span>
+      <span class="logo__word">Heavenly<small>LIGHTING &amp; DÉCOR</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__link" href="shop.html">Shop</a>
+      <div class="nav__item">
+        <a class="nav__link" href="shop.html?category=pendant-lighting" aria-haspopup="true">Lighting<span class="nav__caret">▾</span></a>
+        <div class="dropdown" role="menu">
+          <div class="dropdown__label">Lighting</div>
+          <a href="shop.html?category=outdoor-lighting">Outdoor Lighting</a>
+          <a href="shop.html?category=wall-sconces">Wall Sconces</a>
+          <a href="shop.html?category=pendant-lighting">Pendant Lighting</a>
+          <a href="shop.html?category=chandeliers">Chandeliers</a>
+          <a href="shop.html?category=lamps">Lamps</a>
+        </div>
+      </div>
+      <div class="nav__item">
+        <a class="nav__link" href="shop.html?category=outdoor-lighting" aria-haspopup="true">Outdoor<span class="nav__caret">▾</span></a>
+        <div class="dropdown" role="menu">
+          <div class="dropdown__label">Outdoor lighting</div>
+          <a href="product.html?handle=arden-modern-outdoor-wall-sconce">Arden Wall Sconce — Flagship</a>
+          <a href="product.html?handle=strata-up-down-outdoor-sconce">Strata Up-Down Sconce</a>
+          <a href="{{ROOT}}blog/outdoor-lighting-ideas.html">Outdoor lighting ideas →</a>
+        </div>
+      </div>
+      <a class="nav__link" href="shop.html?category=wall-sconces">Indoor</a>
+      <div class="nav__item">
+        <a class="nav__link" href="shop.html?category=mirrors" aria-haspopup="true">Home Decor<span class="nav__caret">▾</span></a>
+        <div class="dropdown" role="menu">
+          <div class="dropdown__label">Home decor</div>
+          <a href="shop.html?category=mirrors">Mirrors</a>
+          <a href="shop.html?category=rugs">Rugs</a>
+          <a href="shop.html?category=home-accessories">Home Accessories</a>
+          <a href="shop.html?category=decorative-objects">Decorative Objects</a>
+        </div>
+      </div>
+      <a class="nav__link" href="shop.html?q=new">New Arrivals</a>
+      <a class="nav__link" href="shop.html?q=favorite">Best Sellers</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <select class="currency-select currency-select--header" id="currencySelect" aria-label="Currency">
+        <option value="USD" selected>USD $</option>
+        <option value="EUR">EUR €</option>
+        <option value="GBP">GBP £</option>
+        <option value="CAD">CAD $</option>
+        <option value="AUD">AUD $</option>
+        <option value="AED">AED </option>
+        <option value="JPY">JPY ¥</option>
+        <option value="INR">INR ₹</option>
+        <option value="KES">KES </option>
+        <option value="UGX">UGX </option>
+      </select>
+      <button class="icon-btn" data-drawer-open="searchDrawer" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <a class="icon-btn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.6-9.3-8.6C.9 8 2.6 4.5 6 4.5c2.2 0 3.6 1.2 6 3.7 2.4-2.5 3.8-3.7 6-3.7 3.4 0 5.1 3.5 3.3 6.9C19 15.4 12 20 12 20z"/></svg>
+        <span class="icon-btn__badge js-wish-count">0</span>
+      </a>
+      <!-- Customer accounts: rendered by Shopify's customer accounts in production -->
+      <a class="icon-btn" href="track-order.html" aria-label="Account and order tracking">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+      </a>
+      <button class="icon-btn" data-drawer-open="cartDrawer" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="icon-btn__badge js-cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= Mobile menu drawer ================= -->
+<div class="drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel drawer__panel--left" role="dialog" aria-label="Menu">
+    <div class="drawer__head">
+      <span class="drawer__title">Menu</span>
+      <button class="icon-btn" data-drawer-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="drawer__body mobile-nav">
+      <a href="shop.html">Shop all <span>→</span></a>
+      <div class="mobile-nav__group">Lighting</div>
+      <a href="shop.html?category=outdoor-lighting">Outdoor Lighting <span>→</span></a>
+      <a href="shop.html?category=wall-sconces">Wall Sconces <span>→</span></a>
+      <a href="shop.html?category=pendant-lighting">Pendant Lighting <span>→</span></a>
+      <a href="shop.html?category=chandeliers">Chandeliers <span>→</span></a>
+      <a href="shop.html?category=lamps">Lamps <span>→</span></a>
+      <div class="mobile-nav__group">Home decor</div>
+      <a href="shop.html?category=mirrors">Mirrors <span>→</span></a>
+      <a href="shop.html?category=rugs">Rugs <span>→</span></a>
+      <a href="shop.html?category=home-accessories">Home Accessories <span>→</span></a>
+      <a href="shop.html?category=decorative-objects">Decorative Objects <span>→</span></a>
+      <div class="mobile-nav__group">More</div>
+      <a href="shop.html?q=new">New Arrivals <span>→</span></a>
+      <a href="shop.html?q=favorite">Best Sellers <span>→</span></a>
+      <a href="about.html">About Us <span>→</span></a>
+      <a href="contact.html">Contact <span>→</span></a>
+      <a href="track-order.html">Track Order <span>→</span></a>
+    </div>
+    <div class="drawer__foot">
+      <a class="btn btn--primary btn--full" href="shop.html">Shop the collection</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Search drawer ================= -->
+<div class="drawer" id="searchDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel search-overlay__panel" role="dialog" aria-label="Search">
+    <div class="container" style="padding:28px 0 36px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <span class="eyebrow">Search Heavenly</span>
+        <button class="icon-btn" data-drawer-close aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <form class="search-form" onsubmit="return false" role="search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="searchInput" placeholder="Search lighting, mirrors, rugs…" aria-label="Search products" autocomplete="off">
+      </form>
+      <div class="search-hints">
+        <button type="button">sconce</button><button type="button">pendant</button>
+        <button type="button">outdoor</button><button type="button">chandelier</button>
+        <button type="button">mirror</button><button type="button">lamp</button>
+      </div>
+      <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Cart drawer ================= -->
+<div class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel drawer__panel--right" role="dialog" aria-label="Shopping bag">
+    <div class="drawer__head">
+      <span class="drawer__title">Your bag <span class="muted small js-cart-count-inline"></span></span>
+      <button class="icon-btn" data-drawer-close aria-label="Close bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="drawer__body" id="cartDrawerBody"></div>
+    <div class="drawer__foot" id="cartDrawerFoot">
+      <div class="cart-subtotal"><span>Subtotal</span><strong id="cartSubtotal"></strong></div>
+      <p class="cart-note">Shipping, taxes and discount codes are calculated at checkout.</p>
+      <a class="btn btn--primary btn--full" href="checkout.html" data-track-cta="cart_checkout">Checkout securely</a>
+      <a class="btn btn--ghost btn--full mt-3" href="cart.html" style="margin-top:10px">View bag</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{%- comment -%} Related products — product recommendations API or same-type fallback {%- endcomment -%}
+<section class="section" aria-label="Related products">
+  <div class="container">
+    <div class="section-head section-head--row" data-reveal>
+      <div>
+        <p class="eyebrow">You may also like</p>
+        <h2 class="title">Related products</h2>
+      </div>
+      <a class="link-arrow" href="{{ routes.all_products_collection_url }}">Shop all</a>
+    </div>
+    <div class="product-grid" data-related-products data-product-id="{{ product.id }}" data-limit="4">
+      {%- for p in product.collections.first.products limit: 4 -%}
+        {%- unless p.handle == product.handle -%}{%- render 'product-card', product: p -%}{%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Related products", "settings": [] }
+{% endschema %}

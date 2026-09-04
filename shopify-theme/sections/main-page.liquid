@@ -1,0 +1,13 @@
+<div class="container page-head" style="padding-bottom:0">
+  {%- render 'structured-data-breadcrumbs', crumbs: 'page', page: page -%}
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span class="sep">/</span><span>{{ page.title }}</span></nav>
+  <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">{{ page.title }}</h1>
+</div>
+
+<section class="section section--tight">
+  <div class="container prose">{{ page.content }}</div>
+</section>
+
+{% schema %}
+{ "name": "Page", "settings": [] }
+{% endschema %}

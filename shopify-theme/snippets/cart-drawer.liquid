@@ -1,0 +1,18 @@
+{%- comment -%} AJAX cart drawer — uses Shopify Cart AJAX API in theme.js {%- endcomment -%}
+<div class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel drawer__panel--right" role="dialog" aria-label="{{ 'cart.title' | t }}">
+    <div class="drawer__head">
+      <span class="drawer__title">{{ 'cart.title' | t }}</span>
+      <button class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="drawer__body" id="cartDrawerBody" data-cart-items></div>
+    <div class="drawer__foot" id="cartDrawerFoot">
+      <div class="freeship-bar" data-freeship data-threshold="{{ settings.free_shipping_threshold | times: 100 }}"></div>
+      <div class="cart-subtotal"><span>{{ 'cart.subtotal' | t }}</span><strong data-cart-subtotal>{{ cart.total_price | money }}</strong></div>
+      <p class="cart-note">Shipping, taxes and discount codes are calculated at checkout.</p>
+      <a class="btn btn--primary btn--full" href="{{ routes.cart_url }}/checkout" data-track-cta="cart_drawer_checkout">{{ 'cart.checkout' | t }}</a>
+      <a class="btn btn--ghost btn--full" style="margin-top:10px" href="{{ routes.cart_url }}">View bag</a>
+    </div>
+  </div>
+</div>

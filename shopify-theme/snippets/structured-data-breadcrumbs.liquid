@@ -1,0 +1,16 @@
+{%- comment -%} Breadcrumb structured data {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} }{%- if crumbs == 'collection' and collection -%},
+    { "@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": {{ shop.url | append: collection.url | json }} }
+    {%- elsif crumbs == 'product' and product -%},
+    { "@type": "ListItem", "position": 2, "name": {{ product.title | json }}, "item": {{ shop.url | append: product.url | json }} }
+    {%- elsif crumbs == 'page' and page -%},
+    { "@type": "ListItem", "position": 2, "name": {{ page.title | json }}, "item": {{ shop.url | append: page.url | json }} }
+    {%- endif -%}
+  ]
+}
+</script>

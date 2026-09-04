@@ -1,0 +1,49 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Heavenly",
+    "theme_version": "1.0.0",
+    "theme_author": "Heavenly.co",
+    "theme_documentation_url": "https://heavenly.co",
+    "theme_support_url": "https://heavenly.co"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo image (optional — text logo is used by default)" },
+      { "type": "range", "id": "logo_width", "min": 80, "max": 260, "step": 10, "unit": "px", "label": "Logo width", "default": 140 },
+      { "type": "text", "id": "brand_wordmark", "label": "Brand wordmark", "default": "Heavenly" },
+      { "type": "text", "id": "brand_tagline", "label": "Brand tagline", "default": "LIGHTING & DÉCOR" },
+      { "type": "color", "id": "color_accent", "label": "Accent (brass)", "default": "#a8875a" },
+      { "type": "color", "id": "color_night", "label": "Night (footer/dark sections)", "default": "#131518" }
+    ]
+  },
+  {
+    "name": "Store operations",
+    "settings": [
+      { "type": "number", "id": "free_shipping_threshold", "label": "Free shipping threshold (store currency, whole units). 0 disables the progress bar.", "default": 150 },
+      { "type": "text", "id": "support_email", "label": "Support email", "default": "support@heavenly.co" },
+      { "type": "text", "id": "business_hours", "label": "Support hours", "default": "[BUSINESS HOURS]" },
+      { "type": "checkbox", "id": "show_cookie_banner", "label": "Show cookie consent banner", "default": true },
+      { "type": "checkbox", "id": "show_chat_widget", "label": "Show chat widget (integration-ready placeholder)", "default": true },
+      { "type": "checkbox", "id": "show_sample_reviews", "label": "Show clearly-labelled SAMPLE reviews on products without verified reviews (development only — turn OFF before launch)", "default": true }
+    ]
+  },
+  {
+    "name": "Analytics & pixels",
+    "settings": [
+      { "type": "header", "content": "Paste IDs only after obtaining them. Events are consent-gated." },
+      { "type": "text", "id": "ga4_id", "label": "GA4 measurement ID (G-XXXXXXX)", "default": "" },
+      { "type": "text", "id": "meta_pixel_id", "label": "Meta Pixel ID", "default": "" },
+      { "type": "text", "id": "tiktok_id", "label": "TikTok Pixel ID", "default": "" },
+      { "type": "text", "id": "google_ads_id", "label": "Google Ads conversion ID (AW-XXXXX)", "default": "" }
+    ]
+  },
+  {
+    "name": "Currency display",
+    "settings": [
+      { "type": "paragraph", "content": "Extra-currency price display is an ESTIMATE via open exchange rates; the charged currency is the store/Markets currency. For guaranteed multi-currency checkout use Shopify Markets." },
+      { "type": "checkbox", "id": "enable_currency_estimates", "label": "Enable estimated currency switcher", "default": true }
+    ]
+  }
+]

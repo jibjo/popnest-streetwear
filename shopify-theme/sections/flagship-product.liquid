@@ -1,0 +1,78 @@
+{%- comment -%} Homepage flagship product showcase — links to the full PDP {%- endcomment -%}
+{%- assign product = all_products[section.settings.product] -%}
+<section class="section flagship" aria-label="Featured product">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="title">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="pdp" style="align-items:center">
+      <div data-reveal>
+        <div class="gallery" style="position:relative">
+          <div class="gallery__main" style="aspect-ratio:4/4.2">
+            {%- if product != blank -%}
+              {{ product.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: product.featured_image.alt | default: product.title, widths: '600,900,1200' }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+      <div class="buy-panel" data-reveal style="--reveal-delay:.12s">
+        <p class="eyebrow">{{ section.settings.product_eyebrow }}</p>
+        <h2 class="h-subtitle" style="font-size:clamp(26px,3vw,36px)">
+          {%- if product != blank %}{{ product.title }}{% else %}{{ section.settings.fallback_title }}{% endif -%}
+        </h2>
+        {%- if product != blank -%}
+          <div class="buy-panel__price"><span class="price" style="font-size:24px">{% render 'price', product: product %}</span></div>
+        {%- endif -%}
+        <ul style="display:grid;gap:10px;padding-left:20px;margin:20px 0 26px;color:var(--ink-soft)">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ul>
+        <div class="flex flex-wrap gap-3">
+          {%- if product != blank -%}
+            <a class="btn btn--primary" href="{{ product.url }}" data-track-cta="flagship_view">View &amp; configure</a>
+            {%- unless product.available == false -%}
+              <button class="btn btn--ghost" data-quick-add="{{ product.handle }}">Quick add</button>
+            {%- endunless -%}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.badge1 != blank -%}
+          <div class="icon-badge-row mt-6">
+            <span class="icon-badge">✓ {{ section.settings.badge1 }}</span>
+            {%- if section.settings.badge2 != blank -%}<span class="icon-badge">✓ {{ section.settings.badge2 }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Flagship product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "eyebrow", "label": "Section eyebrow", "default": "The flagship" },
+    { "type": "text", "id": "heading", "label": "Section heading", "default": "Meet the Arden" },
+    { "type": "text", "id": "product_eyebrow", "label": "Product eyebrow", "default": "Outdoor wall sconce" },
+    { "type": "text", "id": "fallback_title", "label": "Fallback title (before product selected)", "default": "Arden Modern Outdoor Wall Sconce" },
+    { "type": "text", "id": "badge1", "label": "Badge 1", "default": "2-year limited warranty" },
+    { "type": "text", "id": "badge2", "label": "Badge 2", "default": "Free shipping over $150" }
+  ],
+  "blocks": [
+    { "type": "bullet", "name": "Bullet", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Up-and-down beam that grazes wall texture" }] }
+  ],
+  "presets": [{
+    "name": "Flagship product",
+    "blocks": [
+      { "type": "bullet", "settings": { "text": "Up-and-down beam that grazes wall texture beautifully" } },
+      { "type": "bullet", "settings": { "text": "IP65 sealed aluminum body — rain, dust and coastal air" } },
+      { "type": "bullet", "settings": { "text": "3000 K warm white, ≈30,000-hour LED lifetime" } },
+      { "type": "bullet", "settings": { "text": "Rotatable mount — vertical or horizontal installation" } }
+    ]
+  }]
+}
+{% endschema %}

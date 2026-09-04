@@ -1,0 +1,35 @@
+{%- comment -%} Product card. Param: product {%- endcomment -%}
+<article class="card" data-reveal{% if index %} style="--reveal-delay:{{ index | times: 5 }}ms"{% endif %}>
+  <div class="card__media">
+    <div class="card__badges">
+      {%- unless product.available -%}<span class="badge badge--out">Sold out</span>
+      {%- elsif product.compare_at_price > product.price -%}<span class="badge badge--sale">Sale</span>
+      {%- elsif product.tags contains 'new' -%}<span class="badge badge--new">New</span>{%- endif -%}
+    </div>
+    <button class="card__wish" data-wishlist-button data-wishlist-handle="{{ product.handle }}" aria-label="Add {{ product.title | escape }} to wishlist">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.6-9.3-8.6C.9 8 2.6 4.5 6 4.5c2.2 0 3.6 1.2 6 3.7 2.4-2.5 3.8-3.7 6-3.7 3.4 0 5.1 3.5 3.3 6.9C19 15.4 12 20 12 20z"/></svg>
+    </button>
+    <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.featured_image.alt | default: product.title, widths: '300,450,600,800', sizes: '(min-width:1100px) 25vw, (min-width:640px) 33vw, 50vw', width: 800, height: 1000 }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+    {%- if product.available -%}
+      <button class="card__quick" data-quick-add="{{ product.handle }}">{{ 'products.product.add_to_cart' | t }}</button>
+    {%- endif -%}
+  </div>
+  <div class="card__info">
+    {%- if product.type != blank -%}<span class="card__cat">{{ product.type }}</span>{%- endif -%}
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <div class="card__row">
+      <span class="price">{% render 'price', product: product %}</span>
+      {%- assign rating = product.metafields.reviews.rating.value -%}
+      {%- assign rating_count = product.metafields.reviews.rating_count.value | default: 0 -%}
+      {%- if rating and rating_count > 0 -%}
+        <span class="rating-row"><span class="stars">★★★★★</span> {{ rating }} ({{ rating_count }})</span>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

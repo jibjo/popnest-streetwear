@@ -1,0 +1,90 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <a class="logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+          <span class="logo__mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          </span>
+          <span class="logo__word">{{ settings.brand_wordmark }}<small>{{ settings.brand_tagline }}</small></span>
+        </a>
+        <p class="footer__about">{{ section.settings.blurb }}</p>
+        <div class="footer__social">
+          {%- if section.settings.social_instagram != blank -%}<a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>{%- endif -%}
+          {%- if section.settings.social_pinterest != blank -%}<a href="{{ section.settings.social_pinterest }}" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 20l2-8M10 9.5A2.8 2.8 0 1 1 14 12c-1 .8-2.3 1-3.2.4"/></svg></a>{%- endif -%}
+          {%- if section.settings.social_facebook != blank -%}<a href="{{ section.settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5A.5.5 0 0 1 14 8z"/></svg></a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        <nav aria-label="{{ block.settings.title | escape }}">
+          <h4 {{ block.shopify_attributes }}>{{ block.settings.title }}</h4>
+          <div class="footer__links">
+            {%- assign linklist = linklists[block.settings.menu] -%}
+            {%- for link in linklist.links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endfor -%}
+            {%- if block.settings.include_prefs -%}
+              <a href="#" data-cookie-prefs>Cookie preferences</a>
+            {%- endif -%}
+          </div>
+        </nav>
+      {%- endfor -%}
+
+      <div>
+        <h4>Customer support</h4>
+        <div class="footer__contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <span><a href="mailto:{{ settings.support_email }}">{{ settings.support_email }}</a><br><span style="font-size:12.5px">Replies within 1 business day</span></span>
+        </div>
+        <div class="footer__contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span style="font-size:13.5px">{{ settings.business_hours }}</span>
+        </div>
+        <p style="font-size:12.5px;margin-top:14px">Prices in {{ cart.currency.iso_code }}. Currency conversions shown in other currencies are estimates.</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} — All rights reserved.</span>
+      <div class="footer__legal">
+        {%- for policy in ['privacy-policy','terms-of-service','refund-policy','shipping-policy'] -%}
+          {%- assign p = pages[policy] -%}
+          {%- if p != blank -%}<a href="{{ p.url }}">{{ p.title }}</a>{%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="payment-icons" aria-label="Payment methods">
+        {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endfor -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "blurb", "label": "Brand blurb", "default": "Thoughtfully designed lighting and home décor, made to transform everyday spaces — inside and out." },
+    { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+    { "type": "text", "id": "social_pinterest", "label": "Pinterest URL" },
+    { "type": "text", "id": "social_facebook", "label": "Facebook URL" }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Column title", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu" },
+        { "type": "checkbox", "id": "include_prefs", "label": "Include 'Cookie preferences' link", "default": false }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu", "settings": { "title": "Shop", "menu": "footer" } },
+      { "type": "menu", "settings": { "title": "Support & Policies", "include_prefs": true } }
+    ]
+  }
+}
+{% endschema %}

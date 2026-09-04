@@ -1,0 +1,47 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "search": "Search",
+    "menu": "Menu",
+    "close": "Close",
+    "currency": "Currency",
+    "newsletter_success": "You're on the list. Check your inbox to confirm.",
+    "cookie": {
+      "title": "We use cookies",
+      "body": "Essential cookies keep the store working. With your consent we also use analytics and marketing cookies.",
+      "accept": "Accept all",
+      "reject": "Essential only",
+      "manage": "Manage"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "added_to_cart": "Added to bag",
+      "buy_now": "Buy it now",
+      "sold_out": "Sold out",
+      "in_stock": "In stock — ready to ship",
+      "low_stock": "Low stock",
+      "quantity": "Quantity",
+      "sku": "SKU",
+      "reviews": "Reviews",
+      "write_review": "Write a review",
+      "no_reviews_yet": "No reviews yet — be the first",
+      "sample_reviews_notice": "Sample content: the reviews below are labelled design samples. At launch this section is powered by verified-purchase reviews.",
+      "shipping_estimate": "Shipping estimate",
+      "taxes_included": "Tax included. Shipping calculated at checkout.",
+      "wishlist_add": "Add to wishlist",
+      "wishlist_remove": "Saved to wishlist",
+      "view_wishlist": "View wishlist"
+    }
+  },
+  "cart": {
+    "title": "Your bag",
+    "empty": "Your bag is empty",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout securely",
+    "remove": "Remove",
+    "free_shipping_unlocked": "You've unlocked free shipping on this order",
+    "free_shipping_remaining": "You're {{ amount }} away from free shipping"
+  }
+}

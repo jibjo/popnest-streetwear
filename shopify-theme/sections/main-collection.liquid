@@ -1,0 +1,83 @@
+{%- comment -%} Collection page — uses native Shopify filtering (Search & Discovery app) + sorting {%- endcomment -%}
+<div class="container page-head" style="padding-bottom:0">
+  {%- render 'structured-data-breadcrumbs', crumbs: 'collection', collection: collection -%}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span class="sep">/</span><span>{{ collection.title }}</span>
+  </nav>
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h1 class="h-display" style="font-size:clamp(34px,5vw,56px)">{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}<div class="lede mt-3">{{ collection.description }}</div>{%- endif -%}
+</div>
+
+<section class="section section--tight">
+  <div class="container shop-layout">
+    <aside>
+      <button class="btn btn--ghost btn--small filters-toggle w-full" data-filters-toggle>Filter &amp; sort ▾</button>
+      <form class="filters mt-4" id="collectionFilters" method="get" action="{{ collection.url }}">
+        {%- for filter in collection.filters -%}
+          <div class="filters__group">
+            <div class="filters__group-title">{{ filter.label }}</div>
+            {%- case filter.type -%}
+              {%- when 'boolean', 'list' -%}
+                {%- for value in filter.values -%}
+                  <label class="check-row">
+                    <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                    {{ value.label }} <span class="count">{{ value.count }}</span>
+                  </label>
+                {%- endfor -%}
+              {%- when 'price_range' -%}
+                <div class="price-inputs">
+                  <input type="number" name="{{ filter.min_value.param_name }}" placeholder="Min" min="0" max="{{ filter.range_max | divided_by: 100 }}" value="{{ filter.min_value.value | divided_by: 100 }}">
+                  <span>–</span>
+                  <input type="number" name="{{ filter.max_value.param_name }}" placeholder="Max" min="0" max="{{ filter.range_max | divided_by: 100 }}" value="{{ filter.max_value.value | divided_by: 100 }}">
+                </div>
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+        <button class="btn btn--primary btn--small w-full mt-4" type="submit">Apply filters</button>
+        <a class="btn btn--ghost btn--small w-full mt-2" href="{{ collection.url }}">Clear all</a>
+      </form>
+    </aside>
+
+    <div>
+      <div class="shop-toolbar">
+        <span class="shop-toolbar__count">{{ collection.products_count }} products</span>
+        {%- if section.settings.enable_sorting -%}
+          <label class="flex items-center gap-2">
+            <span class="visually-hidden">Sort products</span>
+            <select class="sort-select" name="sort_by" data-auto-submit="collectionFilters" aria-label="Sort products">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if collection.sort_by == option.value %}selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        {%- endif -%}
+      </div>
+      <div class="product-grid product-grid--3">
+        {%- paginate collection.products by 24 -%}
+          {%- for product in collection.products -%}
+            {%- render 'product-card', product: product -%}
+          {%- else -%}
+            <div class="empty-state" style="grid-column:1/-1"><p><strong>No products match those filters</strong></p><a class="btn btn--primary btn--small" href="{{ collection.url }}">Clear filters</a></div>
+          {%- endfor -%}
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination w-full mt-7" style="grid-column:1/-1;display:flex;gap:10px;justify-content:center" aria-label="Pagination">
+              {%- if paginate.previous -%}<a class="btn btn--ghost btn--small" href="{{ paginate.previous.url }}">← Previous</a>{%- endif -%}
+              {%- if paginate.next -%}<a class="btn btn--ghost btn--small" href="{{ paginate.next.url }}">Next →</a>{%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Collection" },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true }
+  ]
+}
+{% endschema %}

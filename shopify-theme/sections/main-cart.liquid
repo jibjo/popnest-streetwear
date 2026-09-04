@@ -1,0 +1,47 @@
+<div class="container page-head" style="padding-bottom:0">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span class="sep">/</span><span>{{ 'cart.title' | t }}</span></nav>
+  <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">{{ 'cart.title' | t }}</h1>
+</div>
+
+<section class="section section--tight">
+  <div class="container shop-layout" style="grid-template-columns:1.4fr .9fr">
+    <form action="{{ routes.cart_url }}" method="post" id="cartPageForm">
+      {%- if cart.item_count == 0 -%}
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <p><strong>{{ 'cart.empty' | t }}</strong></p>
+          <a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">Explore the collection</a>
+        </div>
+      {%- else -%}
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="84" height="96" loading="lazy"></a>
+            <div>
+              <div class="cart-line__title"><a href="{{ item.url }}">{{ item.product.title }}</a></div>
+              {%- unless item.variant.title contains 'Default' -%}<div class="cart-line__variant">{{ item.variant.title }}</div>{%- endunless -%}
+              <div class="cart-line__price">{{ item.final_line_price | money }}</div>
+              <a class="cart-line__remove" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+            </div>
+            <div class="cart-line__right">
+              {%- render 'quantity-selector', name: 'updates[]', value: item.quantity, line_key: item.key -%}
+            </div>
+          </div>
+        {%- endfor -%}
+        <button class="btn btn--ghost btn--small mt-4" type="submit" name="update">Update quantities</button>
+      {%- endif -%}
+    </form>
+
+    <aside class="checkout-box" style="position:sticky;top:calc(var(--header-h) + 20px)">
+      <h3 style="margin-bottom:8px">Order summary</h3>
+      <div class="cart-subtotal"><span>{{ 'cart.subtotal' | t }}</span><strong>{{ cart.total_price | money }}</strong></div>
+      <p class="cart-note">Shipping and taxes are calculated at checkout.</p>
+      {%- render 'shipping-estimator', compact: true -%}
+      <a class="btn btn--primary btn--full mt-4" href="{{ routes.cart_url }}/checkout" data-track-cta="cart_checkout">{{ 'cart.checkout' | t }}</a>
+      <p class="secure-note mt-4">SSL encrypted checkout</p>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart page", "settings": [] }
+{% endschema %}

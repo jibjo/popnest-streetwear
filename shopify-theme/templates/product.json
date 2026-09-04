@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "vendor", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "inventory": { "type": "inventory", "settings": { "low_stock_threshold": 5 } },
+        "description": { "type": "description", "settings": {} },
+        "variants": { "type": "variant_picker", "settings": {} },
+        "qty": { "type": "quantity", "settings": {} },
+        "assurance": {
+          "type": "assurance",
+          "settings": {
+            "rows": "Shipping estimate|Use the estimator for your country's cost and window.\nEasy returns|See the Returns & Refunds policy for the current window.\nSecure checkout|256-bit SSL. Payment processed by our provider — card details never touch our servers."
+          }
+        },
+        "warranty": { "type": "warranty", "settings": { "text": "2-year limited warranty against manufacturing defects." } },
+        "estimator": { "type": "shipping_estimator", "settings": {} }
+      },
+      "block_order": ["vendor", "title", "price", "inventory", "description", "variants", "qty", "assurance", "warranty", "estimator"],
+      "settings": {
+        "show_faq": true,
+        "specs_note": "Specifications are entered by the store owner from confirmed supplier data.",
+        "low_stock_threshold": 5
+      }
+    },
+    "related": { "type": "related-products" }
+  },
+  "order": ["main", "related"]
+}

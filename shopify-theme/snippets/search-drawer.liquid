@@ -1,0 +1,23 @@
+{%- comment -%} Predictive search drawer — Shopify Predictive Search API {%- endcomment -%}
+<div class="drawer" id="searchDrawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel search-overlay__panel" role="dialog" aria-label="{{ 'general.search' | t }}">
+    <div class="container" style="padding:28px 0 36px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <span class="eyebrow">Search Heavenly</span>
+        <button class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <form class="search-form" action="{{ routes.search_url }}" method="get" role="search" data-predictive-form>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="searchInput" name="q" placeholder="Search lighting, mirrors, rugs…" aria-label="{{ 'general.search' | t }}" autocomplete="off">
+        <input type="hidden" name="type" value="product">
+      </form>
+      <div class="search-hints">
+        <button type="button">sconce</button><button type="button">pendant</button>
+        <button type="button">outdoor</button><button type="button">chandelier</button>
+        <button type="button">mirror</button><button type="button">lamp</button>
+      </div>
+      <div class="search-results" id="searchResults" aria-live="polite" data-predictive-results></div>
+    </div>
+  </div>
+</div>

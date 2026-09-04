@@ -1,0 +1,26 @@
+<div class="container page-head" style="padding-bottom:0">
+  <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">Search</h1>
+  <form class="mt-4" action="{{ routes.search_url }}" method="get" role="search" style="max-width:520px">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search lighting, mirrors, rugs…" aria-label="Search" style="width:100%;border:1.5px solid var(--line);border-radius:999px;padding:13px 22px;font-size:15px;background:#fff">
+    <input type="hidden" name="type" value="product">
+  </form>
+</div>
+
+<section class="section section--tight">
+  <div class="container">
+    {%- if search.performed -%}
+      <p class="shop-toolbar__count mb-5">{{ search.results_count }} results for “{{ search.terms | escape }}”</p>
+      <div class="product-grid product-grid--3">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}{%- render 'product-card', product: item -%}{%- endif -%}
+        {%- else -%}
+          <div class="empty-state" style="grid-column:1/-1"><p><strong>No matches</strong></p><p class="small muted">Try “sconce”, “pendant” or “mirror”.</p></div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search page", "settings": [] }
+{% endschema %}

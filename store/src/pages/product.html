@@ -1,0 +1,156 @@
+<main id="main">
+  <div class="container section--tight" style="padding-top:28px">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="shop.html">Shop</a><span class="sep">/</span>
+      <a href="shop.html?category=outdoor-lighting">Outdoor Lighting</a><span class="sep">/</span>
+      <span>Arden Modern Outdoor Wall Sconce</span>
+    </nav>
+  </div>
+
+  <section class="section--tight" id="pdpRoot" aria-label="Product">
+    <div class="container pdp">
+      <div class="gallery" id="pdpGallery"></div>
+      <div class="buy-panel" id="pdpBuy"></div>
+    </div>
+  </section>
+
+  <!-- Specs / details tabs -->
+  <section class="section pdp-details" aria-label="Product details">
+    <div class="container">
+      <div class="tabs">
+        <div class="tabs__nav" role="tablist" aria-label="Product information">
+          <button class="is-active">Specifications</button>
+          <button>Installation &amp; care</button>
+          <button>Shipping &amp; returns</button>
+          <button>FAQ</button>
+        </div>
+        <div>
+          <div class="tabs__panel is-active" id="pdpSpecs"></div>
+          <div class="tabs__panel">
+            <div class="prose">
+              <h3>Installation</h3>
+              <p>Both Arden finishes hardwire to a standard outdoor junction box. Turn off the circuit at the breaker, mount the bracket (vertical or horizontal — the head rotates), connect the leads per the included diagram, and seal. If you're not comfortable with basic electrical work, we recommend a licensed electrician.</p>
+              <h3>Care</h3>
+              <p>Wipe the aluminum body with a soft, damp cloth. Avoid abrasive pads, solvents and pressure washers. In coastal areas, a monthly rinse with fresh water keeps the finish at its best.</p>
+              <h3>Compatibility</h3>
+              <p>Suitable for covered and exposed outdoor walls — entries, patios, porches, garden and boundary walls. For oceanfront installations we recommend the Brushed Bronze finish.</p>
+            </div>
+          </div>
+          <div class="tabs__panel">
+            <div class="prose">
+              <h3>Shipping</h3>
+              <p>Orders are prepared in [PROCESSING TIME] and ship with tracked carriers. Use the shipping estimator on this page for an honest estimate to your country; exact rates are confirmed at checkout.</p>
+              <h3>Returns</h3>
+              <p>If the Arden isn't right for your wall, see our <a class="link-arrow" style="font-size:inherit" href="returns-refunds.html">Returns &amp; Refunds policy</a> for eligibility and the current return window. Items should be unused and in original packaging. Damaged on arrival? Contact us within 48 hours and we'll make it right.</p>
+            </div>
+          </div>
+          <div class="tabs__panel" id="pdpFaq" class="accordion"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section section--surface" id="reviews" aria-labelledby="revTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Reviews</p>
+        <h2 class="title" id="revTitle">What owners say</h2>
+      </div>
+      <div id="pdpReviews"></div>
+
+      <div class="review-form" data-reveal>
+        <h3 class="h-subtitle">Write a review</h3>
+        <p class="small muted mb-5">Review submissions open at launch and are published only after we verify a matching order. No invented reviews — ever.</p>
+        <form id="reviewForm" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="rvName">Name</label><input id="rvName" required><span class="error">Please add your name</span></div>
+            <div class="field"><label for="rvEmail">Email (never published)</label><input id="rvEmail" type="email" required><span class="error">A valid email is required for verification</span></div>
+            <div class="field field--full">
+              <label>Rating</label>
+              <div class="star-input" id="starInput" role="radiogroup" aria-label="Star rating"></div>
+            </div>
+            <div class="field field--full"><label for="rvTitle">Review title</label><input id="rvTitle" required><span class="error">Add a short title</span></div>
+            <div class="field field--full"><label for="rvBody">Your review</label><textarea id="rvBody" rows="4" required></textarea><span class="error">Tell us a little more</span></div>
+          </div>
+          <button class="btn btn--primary mt-5" type="submit">Submit review</button>
+        </form>
+        <div id="reviewSuccess" style="display:none" role="status" class="mt-5">
+          <div class="ship-est-result" style="background:var(--surface-warm);color:var(--ink)">✓ Thanks — the review form is wired and ready. Live submission activates with our verified-review platform at launch.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frequently bought together -->
+  <section class="section section--tight" aria-labelledby="fbtTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Complete the look</p>
+        <h2 class="title" id="fbtTitle" style="font-size:clamp(22px,3vw,30px)">Frequently bought together</h2>
+      </div>
+      <div class="fbt" id="pdpFbt" data-reveal></div>
+    </div>
+  </section>
+
+  <!-- Related products -->
+  <section class="section" aria-labelledby="relTitle">
+    <div class="container">
+      <div class="section-head section-head--row" data-reveal>
+        <div>
+          <p class="eyebrow">You may also like</p>
+          <h2 class="title" id="relTitle">Related products</h2>
+        </div>
+        <a class="link-arrow" href="shop.html">Shop all</a>
+      </div>
+      <div id="pdpRelated"></div>
+    </div>
+  </section>
+
+  <!-- Recently viewed -->
+  <section class="section section--tight" aria-labelledby="recentTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Pick up where you left off</p>
+        <h2 class="title" id="recentTitle" style="font-size:clamp(22px,3vw,30px)">Recently viewed</h2>
+      </div>
+      <div id="recentShelf"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview">
+  <button class="lightbox__close" aria-label="Close preview" onclick="document.getElementById('lightbox').classList.remove('is-open')">✕</button>
+  <img id="lightboxImg" alt="">
+</div>
+<script type="application/ld+json" id="pdpSchema"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    /* Review form (front-end demo; live submission connects with the review platform) */
+    const stars = document.querySelectorAll("#starInput");
+    let rating = 0;
+    const box = document.getElementById("starInput");
+    for (let i = 1; i <= 5; i++) {
+      const b = document.createElement("button");
+      b.type = "button"; b.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"/></svg>';
+      b.setAttribute("aria-label", i + " star" + (i > 1 ? "s" : ""));
+      b.addEventListener("click", () => { rating = i; [...box.children].forEach((c, j) => c.classList.toggle("lit", j < i)); });
+      box.appendChild(b);
+    }
+    document.getElementById("reviewForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      let ok = true;
+      document.querySelectorAll("#reviewForm [required]").forEach((f) => {
+        const bad = !f.value.trim() || (f.type === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value));
+        f.closest(".field").classList.toggle("is-invalid", bad); if (bad) ok = false;
+      });
+      if (!ok) return;
+      HN.analytics.track("review_submitted_demo", { rating });
+      document.getElementById("reviewForm").style.display = "none";
+      document.getElementById("reviewSuccess").style.display = "";
+    });
+    HN.recent.render(document.getElementById("recentShelf"));
+  });
+</script>

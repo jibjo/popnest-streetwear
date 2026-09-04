@@ -1,0 +1,6 @@
+{%- comment -%} Quantity stepper. Params: name, value, line_key (optional, for AJAX cart) {%- endcomment -%}
+<span class="qty">
+  <button type="button" data-qty="dec"{% if line_key %} data-line="{{ line_key }}"{% endif %} aria-label="Decrease quantity">−</button>
+  <input type="number" min="1" max="99" name="{{ name }}" value="{{ value | default: 1 }}" aria-label="{{ 'products.product.quantity' | t }}" {% if line_key %}data-line-qty="{{ line_key }}"{% endif %}>
+  <button type="button" data-qty="inc"{% if line_key %} data-line="{{ line_key }}"{% endif %} aria-label="Increase quantity">+</button>
+</span>

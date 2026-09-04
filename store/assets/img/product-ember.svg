@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#f2ede4"/><stop offset=".55" stop-color="#e9e2d4"/><stop offset="1" stop-color="#ddd3bf"/>
+</linearGradient>
+<radialGradient id="glow" cx=".5" cy=".42" r=".55">
+<stop offset="0" stop-color="#fff8ea" stop-opacity=".9"/><stop offset="1" stop-color="#fff8ea" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#g)"/>
+<circle cx="400" cy="420" r="300" fill="url(#glow)"/>
+<g fill="none" stroke="#a8875a" stroke-width="2.5" opacity=".85">
+<circle cx="330" cy="480" r="52"/><path d="M430 530 v-120 a40 40 0 0 1 80 0 v120" transform="translate(-45 0)"/><path d="M540 530 c30 -60 60 -60 0 -120 c30 60 -30 60 0 120z" transform="translate(40 0)" opacity=".6"/>
+</g>
+<text x="400" y="810" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#3c3a35">Ember Object Trio</text>
+<text x="400" y="856" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" letter-spacing="4" fill="#8a8d92">Photography in production</text>
+<text x="400" y="936" text-anchor="middle" font-family="Georgia, serif" font-size="20" letter-spacing="6" fill="#a8875a">HEAVENLY</text>
+</svg>

@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "category-grid",
+      "blocks": {
+        "c1": { "type": "category", "settings": { "title": "Outdoor Lighting", "tagline": "Weather-rated glow" } },
+        "c2": { "type": "category", "settings": { "title": "Wall Sconces", "tagline": "Architectural accents" } },
+        "c3": { "type": "category", "settings": { "title": "Pendant Lighting", "tagline": "Sculpted overhead" } },
+        "c4": { "type": "category", "settings": { "title": "Chandeliers", "tagline": "Statement pieces" } },
+        "c5": { "type": "category", "settings": { "title": "Lamps", "tagline": "Warm layered light" } },
+        "c6": { "type": "category", "settings": { "title": "Mirrors", "tagline": "Light & space" } },
+        "c7": { "type": "category", "settings": { "title": "Rugs", "tagline": "Grounded texture" } },
+        "c8": { "type": "category", "settings": { "title": "Home Accessories", "tagline": "Finishing touches" } },
+        "c9": { "type": "category", "settings": { "title": "Decorative Objects", "tagline": "Quiet sculpture" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"],
+      "settings": { "eyebrow": "Browse", "heading": "Collections" }
+    }
+  },
+  "order": ["main"]
+}
