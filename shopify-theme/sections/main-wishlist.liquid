@@ -1,0 +1,49 @@
+{%- comment -%} Wishlist page — renders the browser-saved wishlist (hn_wishlist) via product JS API. {%- endcomment -%}
+<div class="container page-head" style="padding-bottom:0">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span class="sep">/</span><span>Wishlist</span></nav>
+  <h1 class="h-display" style="font-size:clamp(30px,4vw,44px)">Your wishlist</h1>
+  <p class="lede mt-3">Saved on this device. Sign in at launch to sync it everywhere.</p>
+</div>
+
+<section class="section section--tight">
+  <div class="container">
+    <div id="hnWishlistGrid" class="product-grid product-grid--3" aria-live="polite">
+      <div class="empty-state" style="grid-column:1/-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.3-8.6C.9 8 2.6 4.5 6 4.5c2.2 0 3.6 1.2 6 3.7 2.4-2.5 3.8-3.7 6-3.7 3.4 0 5.1 3.5 3.3 6.9C19 15.4 12 20 12 20z"/></svg>
+        <p><strong>Your wishlist is empty</strong></p>
+        <p class="small muted">Tap the heart on any product to save it here.</p>
+        <a class="btn btn--primary btn--small" href="{{ routes.all_products_collection_url }}">Browse products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var grid = document.getElementById('hnWishlistGrid');
+    var saved = [];
+    try { saved = JSON.parse(localStorage.getItem('hn_wishlist')) || []; } catch (e) {}
+    if (!saved.length || !grid) return;
+    grid.innerHTML = '<p class="muted small" style="grid-column:1/-1">Loading your saved pieces…</p>';
+    Promise.all(saved.map(function (h) {
+      return fetch('/products/' + h + '.js').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    })).then(function (products) {
+      var cards = products.filter(Boolean).map(function (p) {
+        return '<article class="card">' +
+          '<div class="card__media">' +
+            '<a href="' + p.url + '"><img src="' + p.featured_image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy" width="600" height="750"></a>' +
+          '</div>' +
+          '<div class="card__info">' +
+            '<h3 class="card__title"><a href="' + p.url + '">' + p.title + '</a></h3>' +
+            '<div class="card__row"><span class="price">' + HN.money(p.price) + '</span></div>' +
+          '</div></article>';
+      });
+      grid.innerHTML = cards.length ? cards.join('') : grid.innerHTML;
+      document.querySelectorAll('.price', grid); /* no-op */
+    });
+  })();
+</script>
+
+{% schema %}
+{ "name": "Wishlist", "settings": [] }
+{% endschema %}

@@ -1,0 +1,52 @@
+TERMS OF SERVICE — Heavenly.co (template)
+
+PASTE INTO: Shopify Admin → Settings → Policies → Terms of service.
+Replace every [PLACEHOLDER] and review with qualified legal counsel before publishing.
+
+WEBSITE USE
+You may use the Site for lawful personal, non-commercial purposes. You agree not to misuse the Site, attempt to breach its security, scrape it at disruptive volumes, or use it to send unlawful content.
+
+ACCOUNT REGISTRATION
+If accounts are offered, you are responsible for keeping your credentials secure and for activity under your account. Notify us immediately of unauthorised use.
+
+PRODUCT INFORMATION
+We work to display products, colours and specifications accurately, but screens vary and specifications can be updated. Each product page states its current published specifications.
+
+PRICING
+Prices are shown in the store currency. Converted-currency displays are estimates for convenience; the charged amount is in the store currency at the payment provider's conversion rate. Prices may change; the price at checkout is the price that applies to your order.
+
+ORDERS
+Your order is an offer to buy. We accept it when we send the order confirmation. If we cannot fulfil an order (for example, a stock error), we will cancel it and refund any payment in full.
+
+PAYMENT
+Payments are processed by our payment provider at checkout. You confirm you are authorised to use the payment method provided. We never store full card details on our servers.
+
+AVAILABILITY
+Products are subject to availability. Stock status shown on product pages reflects our inventory system at the time of display and may change between your visit and your order.
+
+SHIPPING
+Shipping estimates, costs, duties and tracking are described in our Shipping Policy, which forms part of these Terms.
+
+RETURNS
+Returns and refunds follow our Refund Policy, which forms part of these Terms.
+
+INTELLECTUAL PROPERTY
+The Site's content — text, imagery, logos, design and code — belongs to Heavenly.co or its licensors. You may not reproduce or reuse it commercially without written permission.
+
+USER-GENERATED CONTENT
+If you submit reviews, photos or comments, you grant us a non-exclusive licence to display them in connection with the store. Only submit content you have the right to share. We may remove content that is unlawful, off-topic or abusive.
+
+PROMOTIONS
+Offers and discount codes are valid as stated at the time they are issued, cannot be combined unless stated, and can be withdrawn for fraud or error.
+
+THIRD-PARTY SERVICES
+The Site may link to or integrate third-party services (payment, analytics, chat). Those services operate under their own terms and policies.
+
+LIMITATION OF LIABILITY
+To the maximum extent permitted by law, Heavenly.co is not liable for indirect or consequential losses arising from use of the Site. Nothing in these Terms limits liability that cannot be limited by law. Statutory consumer rights are unaffected.
+
+GOVERNING LAW
+These Terms are governed by the laws of [GOVERNING JURISDICTION], without prejudice to mandatory consumer protections in your country of residence.
+
+CONTACT
+Questions about these Terms: support@heavenly.co

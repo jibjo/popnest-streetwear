@@ -1,0 +1,58 @@
+PRIVACY POLICY — Heavenly.co (template)
+
+PASTE INTO: Shopify Admin → Settings → Policies → Privacy policy.
+Replace every [PLACEHOLDER] and review with qualified legal counsel before publishing. This template makes no claim of GDPR/CCPA/UK GDPR compliance until the business configures the required processes.
+
+LAST UPDATED: [EFFECTIVE DATE]
+
+This Privacy Policy explains what information Heavenly.co ("we", "us") collects when you visit our store or buy from us, why we collect it, and the choices you have.
+
+INFORMATION WE COLLECT
+- Order information: name, shipping and billing address, email, phone, and order details needed to fulfil purchases.
+- Account information: if you create an account, your email and preferences.
+- Communications: messages you send us via contact forms, email or chat.
+- Usage data: pages viewed, referring site, and approximate device information, collected via cookies and analytics tools (with your consent where required).
+
+HOW WE USE INFORMATION
+- To process orders, payments, shipping and returns
+- To provide customer support
+- To send transactional emails (order confirmation, shipping, delivery)
+- To send marketing email only with your consent (unsubscribe in every message)
+- To measure and improve the store (analytics, with consent)
+- To detect fraud and keep the store secure
+
+PAYMENT PROCESSING
+Payments are handled by our payment provider at checkout. We never receive or store full card numbers on our servers. The payment provider processes your payment details under its own privacy policy.
+
+COOKIES AND ANALYTICS
+We use essential cookies for cart and checkout functionality, and — only with your consent — analytics and advertising cookies. See our Cookie Policy and manage preferences any time via "Cookie preferences" in the footer.
+
+EMAIL MARKETING
+When you subscribe, we store your email with our email platform to send the content you asked for. Every marketing email includes an unsubscribe link. We do not add you to marketing lists without consent.
+
+CUSTOMER SUPPORT
+Messages you send support are stored so we can help you and reference past conversations.
+
+SHARING WITH SERVICE PROVIDERS
+We share data only with providers needed to run the store: our ecommerce platform, payment provider, shipping carriers, email platform, and review platform. Each processes data on our instructions. We do not sell your personal information.
+
+INTERNATIONAL DATA TRANSFERS
+Our providers may process data in countries other than yours. Where required, transfers rely on appropriate safeguards configured by the business and its providers.
+
+DATA RETENTION
+Order records are kept as long as needed for legal, tax and warranty purposes. Marketing consents are kept until you unsubscribe.
+
+SECURITY
+The store runs on HTTPS/TLS. Access to customer data is limited to team members who need it. No system is perfectly secure; if a data breach ever affects you, we will notify you as required by applicable law.
+
+YOUR RIGHTS
+Depending on where you live, you may have rights to access, correct, export or delete your personal data, and to object to or restrict certain processing. To exercise any right, email [PRIVACY CONTACT EMAIL]. We respond within the timeframe required by applicable law.
+
+CHILDREN'S PRIVACY
+The store is not directed at children under [MINIMUM AGE], and we do not knowingly collect their data.
+
+CHANGES TO THIS POLICY
+If we change this policy, we will post the update here and note the effective date above.
+
+CONTACT
+Privacy questions: [PRIVACY CONTACT EMAIL]

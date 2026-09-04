@@ -36,6 +36,7 @@
         {%- endfor -%}
         <button class="btn btn--primary btn--small w-full mt-4" type="submit">Apply filters</button>
         <a class="btn btn--ghost btn--small w-full mt-2" href="{{ collection.url }}">Clear all</a>
+        <input type="hidden" name="sort_by" value="{{ collection.sort_by | default: collection.default_sort_by }}">
       </form>
     </aside>
 
@@ -81,3 +82,15 @@
   ]
 }
 {% endschema %}
+
+<script>
+  /* Sorting without losing active filters */
+  document.querySelectorAll('[data-auto-submit]').forEach(function (sel) {
+    sel.addEventListener('change', function () {
+      var url = new URL(location.href);
+      url.searchParams.set(sel.name, sel.value);
+      url.searchParams.delete('page');
+      location.href = url.toString();
+    });
+  });
+</script>

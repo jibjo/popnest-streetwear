@@ -403,6 +403,7 @@
     }
   };
   window.HN.ui = ui;
+  window.HN.money = money;
 
   document.addEventListener("DOMContentLoaded", () => { ui.init(); currency.init(); });
 })();

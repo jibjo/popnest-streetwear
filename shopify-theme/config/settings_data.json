@@ -15,10 +15,6 @@
     "meta_pixel_id": "",
     "tiktok_id": "",
     "google_ads_id": "",
-    "enable_currency_estimates": true,
-    "sections": {
-      "header-group": {},
-      "footer-group": {}
-    }
+    "enable_currency_estimates": true
   }
 }

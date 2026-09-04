@@ -4,7 +4,10 @@
     <div class="checkout-box mt-4">
       {{ address | format_address }}
       <div class="flex gap-3 mt-4">
-        <form method="post" action="/account/addresses/{{ address.id }}"><button class="btn btn--ghost btn--small" type="submit">Delete</button></form>
+        <form method="post" action="/account/addresses/{{ address.id }}">
+          <input type="hidden" name="_method" value="delete">
+          <button class="btn btn--ghost btn--small" type="submit">Delete</button>
+        </form>
       </div>
     </div>
   {%- endfor -%}

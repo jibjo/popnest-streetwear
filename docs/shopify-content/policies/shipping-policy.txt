@@ -1,0 +1,41 @@
+SHIPPING POLICY — Heavenly.co (template)
+
+PASTE INTO: Shopify Admin → Settings → Policies → Shipping policy.
+Replace every [PLACEHOLDER] and align rates/windows with your real carrier and fulfilment data before publishing.
+
+PROCESSING TIME
+Orders are prepared and quality-checked within [PROCESSING TIME] after payment confirmation. Orders placed on weekends or public holidays are processed the next business day.
+
+ESTIMATED DELIVERY TIMES
+Delivery estimates begin once your order ships:
+- Domestic: 3–7 business days
+- Europe / UK: 5–10 business days
+- Rest of world: 8–16 business days
+Live estimates are shown at checkout once your address is entered. These are estimates, not guarantees — carrier delays can occur.
+
+SHIPPING DESTINATIONS
+We ship to most countries. If your country is not available at checkout, contact support@heavenly.co — we add destinations as reliable carrier coverage is confirmed.
+
+SHIPPING COSTS
+Costs are calculated by destination and weight, shown before payment, and confirmed at checkout. Free shipping applies to qualifying orders at or above [FREE-SHIPPING THRESHOLD] where offered. Rates are based on our actual carrier and fulfilment costs.
+
+DUTIES, TAXES AND CUSTOMS
+Import duties, taxes and customs fees for international orders are the recipient's responsibility unless stated otherwise at checkout. Customs policies vary by country; contact your local customs office for details. Heavenly has no control over customs delays or additional charges.
+
+TRACKING
+Every order ships with tracking. You will receive a tracking number by email when your order ships; you can also use the Track Order page at any time.
+
+DELAYS
+If a carrier delay affects your order, we will email you as soon as we know. You can always reach a human at support@heavenly.co.
+
+INCORRECT ADDRESSES
+Please double-check your address at checkout. Orders shipped to an incorrect address provided by the customer may not be recoverable; where recovery is possible, re-shipping costs are the customer's responsibility.
+
+LOST PACKAGES
+If tracking shows delivered but your package has not arrived, first check with household members and neighbours, then contact us within [LOST-PACKAGE CLAIM WINDOW]. We will open a carrier investigation and replace or refund confirmed-lost orders.
+
+DAMAGED PACKAGES
+If your order arrives damaged, photograph the packaging and product and contact us within 48 hours of delivery. We will replace damaged items or refund your order — see our Refund Policy.
+
+INTERNATIONAL SHIPPING LIMITATIONS
+Some products may have destination restrictions due to carrier regulations. If a product cannot ship to you, it will be indicated at checkout before payment.

@@ -1,0 +1,40 @@
+REFUND POLICY (RETURNS & REFUNDS) — Heavenly.co (template)
+
+PASTE INTO: Shopify Admin → Settings → Policies → Refund policy.
+Replace every [PLACEHOLDER] and review with qualified legal counsel before publishing.
+
+ELIGIBILITY
+Most items can be returned within [RETURN WINDOW] of delivery if they are unused, in original condition, and in original packaging with all hardware and documentation included.
+
+RETURN WINDOW
+The return window is [RETURN WINDOW] from the delivery date shown by carrier tracking.
+
+PRODUCT CONDITION
+Items must be returned as received: unused, undamaged, and complete. Fixtures that have been installed, wired or painted may not be returnable unless defective.
+
+NON-RETURNABLE ITEMS
+- Gift cards
+- Items marked final sale at checkout
+- Installed or modified electrical fixtures (unless defective)
+- Custom or special-order items, if offered
+
+RETURN SHIPPING RESPONSIBILITY
+Return shipping is [CUSTOMER / HEAVENLY] responsibility for change-of-mind returns. For defective, damaged or incorrect items, Heavenly covers return shipping.
+
+DAMAGED OR DEFECTIVE PRODUCTS
+If an item arrives damaged or develops a defect covered by the 2-year limited lighting warranty, contact us within 48 hours of delivery (for transit damage) with photos and your order number. We will replace the item or refund you — your choice where stock allows.
+
+WRONG ITEMS
+Received something you did not order? Keep the item, photograph the label and contents, and contact us — we will ship the correct item and sort out the rest.
+
+REFUND PROCESSING
+Once your return is received and inspected, refunds are issued to the original payment method within [REFUND PROCESSING TIME]. Your bank may take additional days to post the funds. Original shipping charges are non-refundable unless the return is our error.
+
+EXCHANGES
+Where stock allows, we support exchanges (for example, a different finish of the same sconce). Contact us before shipping anything back and we will arrange the swap.
+
+CANCELLATIONS
+Orders can be cancelled for a full refund before they ship — contact us as early as possible. Once a tracking number is issued, the order must go through the returns process instead.
+
+HOW TO START A RETURN
+Email support@heavenly.co with your order number, the item, and the reason. We will reply within one business day with instructions and the return address: [RETURN ADDRESS].

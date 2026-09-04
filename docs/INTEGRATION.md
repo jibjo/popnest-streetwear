@@ -5,6 +5,20 @@ hook — nothing pretends to be connected. This guide walks through each one.
 
 ---
 
+## 0. Fast path — upload, don't copy-paste
+
+1. Download **`heavenly-shopify-theme-v1.0.0.zip`** (repo root — pre-packaged,
+   validated, folders at zip root).
+2. Shopify Admin → **Online Store → Themes → Add theme → Upload zip file**.
+3. Follow **`docs/shopify-content/00-PUBLISH-CHECKLIST.md`**: import
+   `docs/shopify-products-import.csv`, create menus/collections/pages, paste
+   the policy texts from `docs/shopify-content/policies/`, configure in the
+   theme editor, then **Publish**.
+4. Theme code lives in `shopify-theme/` — edit and re-zip (folders at root)
+   whenever you need changes, or use the theme editor's *Edit code*.
+
+---
+
 ## 1. What's in this repository
 
 | Path | What it is |
