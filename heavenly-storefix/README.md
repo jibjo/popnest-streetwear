@@ -42,3 +42,12 @@ Checkout falls back to `https://payhip.com/Popnest` until you add link codes to
 `CONFIG.PRODUCT_LINKS` in `script.js`; per-product deep links then pre-fill the PayHip
 cart using the same `buy?s=1&qty[..]=n&cart_links[]=..` format that already works on the
 Popnest storefront.
+
+## Two variants
+
+| file | size | covers |
+| --- | --- | --- |
+| `script.js` | 23.6 KB | full version — toasts, colour/size variants, scroll-reveal, cart persistence, PayHip deep links, `HeavenlyCart.*` console API (46/46 jsdom checks) |
+| `script-lite.js` | ~5 KB | same visible behaviour, no comments — small enough to copy-paste from a phone (26/26 jsdom checks, `test-lite.mjs`) |
+
+Commit either one to the repo root under the name `script.js`.
