@@ -103,6 +103,7 @@
     initCartUI();
     initNewsletter();
     initMotion();
+    initMobileNav();
     renderCart();
   }
 
@@ -596,6 +597,71 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 
     Array.prototype.forEach.call(targets, function (el) { observer.observe(el); });
+  }
+
+  /* ------------------------------------------------- 8b. mobile nav menu
+     styles.css hides .nav-menu below 768px and the markup ships no button to
+     bring it back, so on phones the links are unreachable. Injected here so the
+     whole fix stays one file. */
+  function initMobileNav() {
+    var style = document.createElement('style');
+    style.textContent =
+      '.nav-burger{display:none;background:none;border:1px solid var(--border-color);' +
+      'border-radius:8px;color:var(--text-primary);font-size:20px;line-height:1;padding:6px 10px;' +
+      'cursor:pointer;margin-left:12px}' +
+      '.nav-burger:focus-visible{outline:2px solid var(--accent-primary);outline-offset:2px}' +
+      '@media (max-width:768px){.nav-burger{display:inline-flex}' +
+      '.nav-menu.nav-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;' +
+      'right:0;margin:0;padding:16px 20px 20px;background:var(--bg-primary);gap:16px;' +
+      'border-bottom:1px solid var(--border-color);box-shadow:0 14px 30px var(--shadow-dark);z-index:1200}' +
+      '.nav-menu.nav-open a{font-size:16px;color:var(--text-primary)}}';
+    document.head.appendChild(style);
+
+    var bar = document.querySelector('.navbar .nav-right') || document.querySelector('.nav-wrapper');
+    var menu = document.querySelector('.nav-menu');
+    if (!bar || !menu) return;
+
+    var burger = document.createElement('button');
+    burger.type = 'button';
+    burger.className = 'nav-burger';
+    burger.setAttribute('aria-controls', 'navMenu');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.textContent = '\u2630';
+    bar.appendChild(burger);
+
+    if (!menu.id) menu.id = 'navMenu';
+
+    function close() {
+      menu.classList.remove('nav-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Open menu');
+      burger.textContent = '\u2630';
+    }
+    function toggle() {
+      var open = menu.classList.toggle('nav-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      burger.textContent = open ? '\u2715' : '\u2630';
+      if (open) {
+        var first = menu.querySelector('a');
+        if (first) first.focus({ preventScroll: true });
+      }
+    }
+    burger.addEventListener('click', toggle);
+
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.classList.contains('nav-open')) {
+        close();
+        burger.focus({ preventScroll: true });
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) close();
+    });
   }
 
   /* ------------------------------------------------------- 9. toasts */

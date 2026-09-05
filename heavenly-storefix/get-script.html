@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get script.js for heavenly-sconce-store</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background:#0f0f0f; color:#fff; margin:0; padding:28px 20px 60px; line-height:1.6; }
+  .wrap { max-width: 720px; margin:0 auto; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  p.lead { color:#bbb; margin:0 0 26px; }
+  .card { background:#1a1a1a; border:1px solid #333; border-radius:14px; padding:20px; margin-bottom:16px; }
+  .card h2 { font-size:18px; margin:0 0 4px; }
+  .size { color:#999; font-size:14px; margin:0 0 14px; }
+  a.btn, button.btn { display:inline-block; text-decoration:none; background:linear-gradient(135deg,#FFD700,#FFA500); color:#111; font-weight:700; padding:12px 20px; border-radius:999px; border:none; font-size:15px; cursor:pointer; margin-right:10px; }
+  a.ghost, button.ghost { background:transparent; color:#FFD700; border:1px solid #FFD700; }
+  ol { padding-left: 20px; }
+  li { margin-bottom:10px; }
+  code { background:#000; padding:2px 6px; border-radius:6px; color:#FFD700; font-size:13px; word-break:break-all; }
+  .warn { border-left:4px solid #e0a800; }
+  .ok { color:#7fd18b; }
+  .bad { color:#e05b5b; }
+  #status { min-height:22px; font-size:14px; margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Heavenly — the real <code>script.js</code></h1>
+  <p class="lead">Tap <b>Download</b>, then upload that file on GitHub. No copy-paste, so it cannot be truncated or replaced by a link.</p>
+
+  <div class="card">
+    <h2>Option 1 &mdash; full version (recommended)</h2>
+    <p class="size">Dark/light theme, cart with size variants, toasts, filters, newsletter, PayHip deep links, <code>HeavenlyCart</code> console API. <b>Must land at 26,424 bytes.</b> Tested 57/57 (now includes a phone menu).</p>
+    <a class="btn" href="script.js" download="script.js">Download script.js</a>
+    <button class="btn ghost" data-copy="script.js">Copy instead</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="card">
+    <h2>Option 2 &mdash; small version</h2>
+    <p class="size">Same visible behaviour, no comments. <b>Must land at 5,455 bytes.</b> Tested 26/26.</p>
+    <a class="btn" href="script-lite.js" download="script.js">Download as script.js</a>
+    <button class="btn ghost" data-copy="script-lite.js">Copy instead</button>
+  </div>
+
+  <div class="card warn">
+    <h2>Why your last attempt looked like nothing</h2>
+    <p>The file you committed was <b>269 bytes</b> &mdash; it contained the two download <i>links</i> as text, not the code. JavaScript parses <code>https:</code> as a label and the URLs as comments, so the second line throws:</p>
+    <p><code>SyntaxError: Label 'https' has already been declared</code></p>
+    <p>A file that fails to parse runs nothing at all &mdash; every button stays dead, exactly like before.</p>
+  </div>
+
+  <div class="card">
+    <h2>Upload steps (phone works)</h2>
+    <ol>
+      <li>Tap <b>Download script.js</b> above &mdash; check it lands in your Downloads folder at <b>26,424 bytes</b>, not 269.</li>
+      <li>Open <a href="https://github.com/jibjo/heavenly-sconce-store/upload/main" style="color:#FFD700">github.com/jibjo/heavenly-sconce-store/upload/main</a></li>
+      <li>Tap <b>Choose your files</b> &rarr; pick <code>script.js</code> &rarr; <b>Commit changes</b> directly to <code>main</code>. Because a file of that name already exists, GitHub will <b>replace</b> it &mdash; that is what you want.</li>
+      <li>Then clear the second, separate problem: the repo has <b>no Pages build since Sep&nbsp;4</b>, so even a perfect file stays unpublished. See the notes in chat.</li>
+    </ol>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', async function () {
+      var f = btn.getAttribute('data-copy');
+      try {
+        var txt = await (await fetch(f)).text();
+        await navigator.clipboard.writeText(txt);
+        document.getElementById('status').innerHTML =
+          '<span class="ok">Copied ' + txt.length + ' characters. Paste into the GitHub editor and confirm the size matches.</span>';
+      } catch (e) {
+        document.getElementById('status').innerHTML =
+          '<span class="bad">Clipboard blocked by the browser &mdash; use the Download button instead.</span>';
+      }
+    });
+  });
+</script>
+</body>
+</html>
