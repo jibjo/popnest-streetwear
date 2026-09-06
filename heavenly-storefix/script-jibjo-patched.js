@@ -73,8 +73,6 @@
   }
 
   window.addToCart = function addToCart(name, price) {
-    const box = $("#quantity");
-    if (box) quantity = Math.max(1, Math.min(99, Number(box.value) || 1));
     const amount = name === "Armor Sconce" ? quantity : 1;
     const existing = cart.find((item) => item.name === name && item.price === Number(price));
 
@@ -110,18 +108,16 @@
       alert("Your cart is empty.");
       return;
     }
-    // Real storefront. Swap in per-product payhip.com/b/<code> links later if
-    // you want each card to jump straight to its own payment page.
-    const summary = "Your cart total is " + money(cartTotal()) + ". Opening PayHip…";
-    if (window.location.href.startsWith("file://")) { alert(summary); return; }
-    const note = document.createElement("div");
-    note.textContent = summary;
-    note.setAttribute("role", "status");
-    note.style.cssText = "position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:2500;" +
-      "background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border-color);" +
-      "border-left:4px solid var(--accent-primary);border-radius:12px;padding:13px 18px;font-size:14px;" +
-      "box-shadow:0 14px 40px var(--shadow-dark);max-width:min(92vw,520px)";
-    document.body.appendChild(note);
+    // Swap in per-product payhip.com/b/<code> links later for one-click buys.
+    const note = "Your cart total is " + money(cartTotal()) + ". Opening PayHip…";
+    if (window.location.protocol === "file:") { alert(note); return; }
+    const toast = document.createElement("div");
+    toast.setAttribute("role", "status");
+    toast.textContent = note;
+    toast.style.cssText = "position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:60;" +
+      "background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);" +
+      "color:var(--text);padding:13px 18px;font-size:11px;letter-spacing:1px";
+    document.body.appendChild(toast);
     window.setTimeout(() => { window.location.href = PAYHIP_STORE; }, 500);
   };
 
@@ -136,34 +132,23 @@
     });
   };
 
-  function isDark() {
-    return document.documentElement.getAttribute("data-theme") === "dark";
-  }
-
   function setupTheme() {
     const toggle = $("#themeToggle");
     const icon = $(".theme-icon");
+    const saved = localStorage.getItem("heavenly-theme");
+    if (saved === "light") document.body.classList.add("light-theme");
 
     function render() {
-      if (icon) icon.textContent = isDark() ? "☀️" : "🌙";
+      if (icon) icon.textContent = document.body.classList.contains("light-theme") ? "☀️" : "🌙";
     }
-
-    // styles.css only exposes the dark palette through [data-theme="dark"],
-    // so the attribute has to live on <html>; a body class matches nothing.
-    // Dark is the brand default, light is opt-in and remembered.
-    if (localStorage.getItem("heavenly-theme") === "light") {
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-    render();
 
     toggle?.addEventListener("click", () => {
-      if (isDark()) document.documentElement.removeAttribute("data-theme");
-      else document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("heavenly-theme", isDark() ? "dark" : "light");
+      document.body.classList.toggle("light-theme");
+      localStorage.setItem("heavenly-theme", document.body.classList.contains("light-theme") ? "light" : "dark");
       render();
     });
+
+    render();
   }
 
   function setupSelections() {
@@ -188,47 +173,44 @@
     });
   }
 
-  function setupMobileNav() {
-    const style = document.createElement("style");
-    style.textContent =
-      ".nav-burger{display:none;background:none;border:1px solid var(--border-color);border-radius:8px;" +
-      "color:var(--text-primary);font-size:20px;line-height:1;padding:6px 10px;cursor:pointer;margin-left:12px}" +
-      "@media (max-width:768px){.nav-burger{display:inline-flex}" +
-      ".nav-menu.nav-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;margin:0;" +
-      "padding:16px 20px 20px;background:var(--bg-primary);gap:16px;border-bottom:1px solid var(--border-color);" +
-      "box-shadow:0 14px 30px var(--shadow-dark);z-index:1200}" +
-      ".nav-menu.nav-open a{font-size:16px;color:var(--text-primary)}}";
-    document.head.appendChild(style);
-
-    const bar = $(".navbar .nav-right") || $(".nav-wrapper");
-    const menu = $(".nav-menu");
-    if (!bar || !menu) return;
-    if (!menu.id) menu.id = "navMenu";
-
-    const burger = document.createElement("button");
-    burger.type = "button";
-    burger.className = "nav-burger";
-    burger.setAttribute("aria-controls", "navMenu");
-    burger.setAttribute("aria-expanded", "false");
-    burger.setAttribute("aria-label", "Open menu");
-    burger.textContent = "\u2630";
-    bar.appendChild(burger);
-
-    const close = () => {
-      menu.classList.remove("nav-open");
-      burger.setAttribute("aria-expanded", "false");
-      burger.setAttribute("aria-label", "Open menu");
-      burger.textContent = "\u2630";
-    };
-    burger.addEventListener("click", () => {
-      const open = menu.classList.toggle("nav-open");
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      burger.textContent = open ? "\u2715" : "\u2630";
-      if (open) menu.querySelector("a")?.focus({ preventScroll: true });
+  function setupProductButtons() {
+    // The redesign dropped inline onclick="" in favour of data-* attributes,
+    // so the handlers have to be attached here or nothing is clickable.
+    $$(".product-card .add-product").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".product-card");
+        if (!card) return;
+        window.addToCart(card.dataset.product, Number(card.dataset.price));
+      });
     });
-    menu.addEventListener("click", (event) => { if (event.target.closest("a")) close(); });
-    window.addEventListener("resize", () => { if (window.innerWidth > 768) close(); });
+
+    $$(".filter-btn[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => window.filterProducts(button.dataset.filter));
+    });
+  }
+
+  function setupFlagship() {
+    const add = $("#addArmor");
+    add?.addEventListener("click", () => window.addToCart("Armor Sconce", 129.99));
+
+    const buy = $("#buyArmor");
+    buy?.addEventListener("click", () => {
+      window.addToCart("Armor Sconce", 129.99);
+      window.checkout();
+    });
+
+    // Quantity controls are element ids now (#increaseQty / #decreaseQty),
+    // not onclick attributes, so bind them directly.
+    $("#increaseQty")?.addEventListener("click", () => window.increaseQty());
+    $("#decreaseQty")?.addEventListener("click", () => window.decreaseQty());
+
+    // Finish and size choices on the flagship card.
+    $$(".options button").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.parentElement.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
   }
 
   function setupCartTrigger() {
@@ -254,6 +236,47 @@
     });
   }
 
+  function setupMobileNav() {
+    const nav = $(".navbar nav");
+    const actions = $(".nav-actions");
+    if (!nav || !actions) return;
+
+    const style = document.createElement("style");
+    style.textContent =
+      ".nav-burger{display:none}@media(max-width:800px){.nav-burger{display:block}" +
+      ".navbar nav.nav-open{display:flex;position:absolute;top:84px;left:0;right:0;flex-direction:column;" +
+      "gap:0;background:rgba(16,16,15,.98);border-bottom:1px solid var(--line);padding:10px 5% 18px;z-index:9}" +
+      ".navbar nav.nav-open a{padding:14px 0;border-bottom:1px solid var(--line)}}" +
+      "body.light-theme .navbar nav.nav-open{background:rgba(244,241,235,.98)}";
+    document.head.appendChild(style);
+
+    if (getComputedStyle(nav).position !== "static" && !document.querySelector(".navbar").style.position) {
+      document.querySelector(".navbar").style.position = "sticky";
+    }
+
+    const burger = document.createElement("button");
+    burger.type = "button";
+    burger.className = "nav-burger icon-btn";
+    burger.setAttribute("aria-controls", "primaryNav");
+    burger.setAttribute("aria-expanded", "false");
+    burger.textContent = "MENU";
+    nav.id = nav.id || "primaryNav";
+    actions.insertBefore(burger, actions.firstChild);
+
+    const close = () => {
+      nav.classList.remove("nav-open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.textContent = "MENU";
+    };
+    burger.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.textContent = open ? "CLOSE" : "MENU";
+    });
+    nav.addEventListener("click", (event) => { if (event.target.closest("a")) close(); });
+    window.addEventListener("resize", () => { if (window.innerWidth > 800) close(); });
+  }
+
   function setupEscape() {
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeCart();
@@ -262,16 +285,18 @@
 
   function boot() {
     setupTheme();
-    setupMobileNav();
     setupSelections();
+    setupProductButtons();
+    setupFlagship();
     setupCartTrigger();
+    setupMobileNav();
     setupNewsletter();
     setupEscape();
     updateCart();
   }
 
-  // A cached or restored page can reach "complete" before this listener is
-  // attached, and then DOMContentLoaded never fires.
+  // A restored/cached page can reach "complete" before this listener attaches,
+  // and then DOMContentLoaded never fires.
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
